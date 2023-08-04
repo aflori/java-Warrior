@@ -1,9 +1,9 @@
-public class BoarGame {
+public class BoardGame {
     private Personnage playerCharacter;
     private int positionPersonnage;
     static private final int NB_CASE=64;
 
-    BoarGame(Personnage playerCharacter)
+    BoardGame(Personnage playerCharacter)
     {
         this.playerCharacter = playerCharacter;
         this.positionPersonnage = 1;
