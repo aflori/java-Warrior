@@ -6,7 +6,7 @@ public class Guerrier extends Personnage {
         this.name = "";
         this.lifePoint = 5;
         this.attackPower = 5;
-        this.weapon = new Weapon("wooden sword", 1, CharacterType.WARRIOR);
+        this.weapon = new Weapon("épée en bois", 1, CharacterType.WARRIOR);
         this.shield = null;
     }
     Guerrier (String name)
@@ -14,7 +14,7 @@ public class Guerrier extends Personnage {
         this.name = name;
         this.lifePoint = 5;
         this.attackPower = 5;
-        this.weapon = new Weapon("wooden sword", 1, CharacterType.WARRIOR);
+        this.weapon = new Weapon("épée en bois", 1, CharacterType.WARRIOR);
         this.shield = null;
     }
     Guerrier(String Name, int lifePoint, int attackPower) {
@@ -62,7 +62,7 @@ public class Guerrier extends Personnage {
     public void printCharacterInformation() {
         System.out.printf("Le guerrier s'appel %s.\n", this.name);
         System.out.printf("Le guerrier a %d PV et %d point de force.\n", this.lifePoint, this.attackPower);
-        System.out.printf("Le guerrier a possède l'arme %s.\n", this.weapon.name);
+        System.out.printf("Le guerrier possède l'arme %s.\n", this.weapon.name);
         if(this.shield == null)
         {
             System.out.print("Le guerrier n'a pas de bouclier.\n");

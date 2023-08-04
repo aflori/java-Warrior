@@ -18,7 +18,7 @@ public class Magicien extends Personnage
         this.name = name;
         this.lifePoint = 3;
         this.attackPower = 8;
-        this.weapon = new Weapon("simple fireball", 1, CharacterType.MAGICIAN);
+        this.weapon = new Weapon("boule de feu", 1, CharacterType.MAGICIAN);
         this.shield = null;
     }
     Magicien(String Name, int lifePoint, int attackPower)
@@ -29,7 +29,7 @@ public class Magicien extends Personnage
         this.name=Name;
         this.lifePoint=lifePoint;
         this.attackPower=attackPower;
-        this.weapon = new Weapon("simple fireball", 1, CharacterType.MAGICIAN);
+        this.weapon = new Weapon("boule de feu", 1, CharacterType.MAGICIAN);
         this.shield = null;
     }
 
@@ -68,7 +68,7 @@ public class Magicien extends Personnage
     public void printCharacterInformation() {
         System.out.printf("Le magicien s'appel %s.\n", this.name);
         System.out.printf("Le magicien a %d PV et %d point de force.\n", this.lifePoint, this.attackPower);
-        System.out.printf("Le magicien a possède le sort %s.\n", this.weapon.name);
+        System.out.printf("Le magicien possède le sort %s.\n", this.weapon.name);
         if(this.shield == null)
         {
             System.out.printf("Le magicien n'a pas de philtre.\n");

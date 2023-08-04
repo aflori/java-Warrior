@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class BoardGame {
     private Personnage playerCharacter;
     private int positionPersonnage;
@@ -10,8 +12,13 @@ public class BoardGame {
     }
     public void startGame(Menu menuDeJeu, Personnage playerCharacter)
     {
+        Scanner scanner = new Scanner(System.in);
+        System.out.printf("Vous êtes sur la case %d\n", this.positionPersonnage);
         do
         {
+            System.out.print("Appuyez sur entrer pour jouer.\n");
+            scanner.nextLine();
+
             int dice = Main.randomInt(1,6);
             System.out.printf("Vous avez fait %d au dé.\n",dice);
 
