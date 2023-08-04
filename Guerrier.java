@@ -5,7 +5,7 @@ public class Guerrier extends Personnage {
         this.name = "";
         this.lifePoint = 5;
         this.attackPower = 5;
-        this.weapon = new Weapon("épée en bois", 1, CharacterType.WARRIOR);
+        this.weapon = new Weapon("épée en bois", 1);
         this.shield = null;
     }
 
@@ -13,7 +13,7 @@ public class Guerrier extends Personnage {
         this.name = name;
         this.lifePoint = 5;
         this.attackPower = 5;
-        this.weapon = new Weapon("épée en bois", 1, CharacterType.WARRIOR);
+        this.weapon = new Weapon("épée en bois", 1);
         this.shield = null;
     }
 
@@ -28,7 +28,7 @@ public class Guerrier extends Personnage {
         this.name = Name;
         this.lifePoint = lifePoint;
         this.attackPower = attackPower;
-        this.weapon = new Weapon("wooden sword", 1, CharacterType.WARRIOR);
+        this.weapon = new Weapon("wooden sword", 1);
         this.shield = null;
     }
 

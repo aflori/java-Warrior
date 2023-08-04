@@ -6,7 +6,7 @@ public class Magicien extends Personnage {
         this.name = "";
         this.lifePoint = 3;
         this.attackPower = 8;
-        this.weapon = new Weapon("simple fireball", 1, CharacterType.MAGICIAN);
+        this.weapon = new Spell("simple fireball", 1);
         this.shield = null;
     }
 
@@ -14,7 +14,7 @@ public class Magicien extends Personnage {
         this.name = name;
         this.lifePoint = 3;
         this.attackPower = 8;
-        this.weapon = new Weapon("boule de feu", 1, CharacterType.MAGICIAN);
+        this.weapon = new Spell("boule de feu", 1);
         this.shield = null;
     }
 
@@ -27,7 +27,7 @@ public class Magicien extends Personnage {
         this.name = Name;
         this.lifePoint = lifePoint;
         this.attackPower = attackPower;
-        this.weapon = new Weapon("boule de feu", 1, CharacterType.MAGICIAN);
+        this.weapon = new Spell("boule de feu", 1);
         this.shield = null;
     }
 

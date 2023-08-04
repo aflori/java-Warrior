@@ -5,8 +5,8 @@ public abstract class Personnage {
     protected int lifePoint;
     protected int attackPower;
 
-    protected Weapon weapon;
-    protected Shield shield;
+    protected OffenseTool weapon;
+    protected DefenseTool shield;
 
     public abstract void printCharacterInformation();
 
