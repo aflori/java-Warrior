@@ -26,14 +26,13 @@ public class Main {
         System.out.println("Merci d'avoir joué");
     }
 
-
+    private static final Random r = new Random();
     public static int randomInt(int vMin, int vMax)
     {
         if (vMin >= vMax) {
             throw new IllegalArgumentException("max must be greater than min");
         }
 
-        Random r = new Random();
         return r.nextInt((vMax - vMin) + 1) + vMin;
     }
 }
