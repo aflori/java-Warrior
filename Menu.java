@@ -5,9 +5,11 @@ public class Menu {
         CREATE_CHARACTER, QUIT_GAME, START_GAME
     }
     private boolean didCreateCharacter;
+    private boolean didStartGame;
     private static final Scanner consoleInput = new Scanner(System.in);
     Menu() {
         this.didCreateCharacter = false;
+        this.didStartGame = false;
     }
 
     public PossibleReturn showMenu()
@@ -17,7 +19,10 @@ public class Menu {
         do{
             System.out.println("Que voulez-vous faire? (tapez le bon numéro):");
             if(! didCreateCharacter ) System.out.println("1 - Créer un nouveau personnage");
-            else System.out.println("1 - Comencer la partie");
+            else {
+                if(didStartGame) System.out.println("1 - Recommencer une partie");
+                else System.out.println("1 - Comencer la partie");
+            }
             System.out.println("2 - Quitter le jeu");
             userInput = consoleInput.nextInt();
 
@@ -29,6 +34,7 @@ public class Menu {
                     }
                     else
                     {
+                        this.didStartGame = true;
                         return PossibleReturn.START_GAME;
                     }
                 }

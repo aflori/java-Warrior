@@ -8,4 +8,3 @@ public class Weapon {
         this.name = name; this.attackLevel = attack; this.ownerType = owner;
     }
 }
-;

@@ -13,7 +13,7 @@ public class BoardGame {
     public void startGame(Menu menuDeJeu, Personnage playerCharacter)
     {
         Scanner scanner = new Scanner(System.in);
-        System.out.printf("Vous êtes sur la case %d\n", this.positionPersonnage);
+        System.out.printf("Vous êtes sur la case %d / %s\n", this.positionPersonnage, NB_CASE);
         do
         {
             System.out.print("Appuyez sur entrer pour jouer.\n");
@@ -31,6 +31,9 @@ public class BoardGame {
     public void characterMovement(int value)
     {
         this.positionPersonnage+= value;
-        if(this.positionPersonnage>NB_CASE) this.positionPersonnage = NB_CASE;
+        if(this.positionPersonnage>NB_CASE)
+        {
+            this.positionPersonnage = 2*NB_CASE - this.positionPersonnage;
+        }
     }
 }

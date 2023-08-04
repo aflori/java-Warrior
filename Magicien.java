@@ -2,8 +2,6 @@
 public class Magicien extends Personnage
 {
 
-    protected Weapon spell;
-    protected Shield philter;
 
     Magicien()
     {
@@ -71,11 +69,11 @@ public class Magicien extends Personnage
         System.out.printf("Le magicien possède le sort %s.\n", this.weapon.name);
         if(this.shield == null)
         {
-            System.out.printf("Le magicien n'a pas de philtre.\n");
+            System.out.print("Le magicien n'a pas de philtre.\n");
         }
         else
         {
-            System.out.printf("Le magicien a un philtre de %s.\n", this.philter.name);
+            System.out.printf("Le magicien a un philtre de %s.\n", this.shield.name);
         }
     }
 }
