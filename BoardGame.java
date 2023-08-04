@@ -14,13 +14,16 @@ public class BoardGame {
         {
             int dice = Main.randomInt(1,6);
             System.out.printf("Vous avez fait %d au dé.\n",dice);
-            this.positionPersonnage+=dice;
 
-            if(this.positionPersonnage>NB_CASE) this.positionPersonnage = NB_CASE;
+            this.characterMovement(dice);
 
             System.out.printf("Vous êtes sur la case %d / %d.\n",this.positionPersonnage, NB_CASE);
         }while(this.positionPersonnage<NB_CASE);
     }
 
-
+    public void characterMovement(int value)
+    {
+        this.positionPersonnage+= value;
+        if(this.positionPersonnage>NB_CASE) this.positionPersonnage = NB_CASE;
+    }
 }
