@@ -18,6 +18,7 @@ public class Main {
                 case CREATE_CHARACTER -> playerCharacter = menu.createCharacter();
                 case START_GAME -> {
                     playerGame = new BoardGame(playerCharacter);
+                    playerGame.startGame(menu, playerCharacter);
                 }
             }
         }while(menuAction!= Menu.PossibleReturn.QUIT_GAME);

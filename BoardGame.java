@@ -8,4 +8,8 @@ public class BoardGame {
         this.playerCharacter = playerCharacter;
         this.positionPersonnage = 1;
     }
+    public void startGame(Menu menuDeJeu, Personnage playerCharacter)
+    {
+
+    }
 }
