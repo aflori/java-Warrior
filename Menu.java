@@ -46,7 +46,7 @@ public class Menu {
 
     }
 
-    public Personnage createCharacter() {
+    public Personnage menuToCreateCharacter() {
         CharacterType typeCharacter;
         Personnage playerPersonnage;
         this.didCreateCharacter = true;
