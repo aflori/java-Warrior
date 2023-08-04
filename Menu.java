@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Menu {
     public enum PossibleReturn {
-        CREATE_CHARACTER, QUIT_GAME
+        CREATE_CHARACTER, QUIT_GAME, START_GAME
     }
     private boolean didCreateCharacter;
     private static final Scanner consoleInput = new Scanner(System.in);
@@ -17,6 +17,7 @@ public class Menu {
         do{
             System.out.println("Que voulez-vous faire? (tapez le bon numéro):");
             if(! didCreateCharacter ) System.out.println("1 - Créer un nouveau personnage");
+            else System.out.println("1 - Comencer la partie");
             System.out.println("2 - Quitter le jeu");
             userInput = consoleInput.nextInt();
 
@@ -25,6 +26,10 @@ public class Menu {
                     if(!didCreateCharacter)
                     {
                         return PossibleReturn.CREATE_CHARACTER;
+                    }
+                    else
+                    {
+                        return PossibleReturn.START_GAME;
                     }
                 }
                 case 2 -> {
