@@ -2,6 +2,8 @@ import java.util.Random;
 import Character.*;
 
 import Exception.FinDePartie;
+import MenuClass.Menu;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -20,7 +22,7 @@ public class Main {
                     case CREATE_CHARACTER -> playerCharacter = menu.menuToCreateCharacter();
                     case START_GAME -> {
                         playerGame = new BoardGame(playerCharacter);
-                        playerGame.startGame(menu, playerCharacter);
+                        playerGame.startGame();
                     }
                 }
             } while (menuAction != Menu.PossibleReturn.QUIT_GAME);

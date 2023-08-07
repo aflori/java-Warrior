@@ -1,3 +1,5 @@
+package MenuClass;
+
 import Character.*;
 
 import java.util.Scanner;
@@ -12,9 +14,9 @@ public class Menu {
 
     private boolean didCreateCharacter;
     private boolean didStartGame;
-    private static final Scanner consoleInput = new Scanner(System.in);
+    protected static final Scanner consoleInput = new Scanner(System.in);
 
-    Menu() {
+    public Menu() {
         this.didCreateCharacter = false;
         this.didStartGame = false;
     }
