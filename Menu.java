@@ -1,4 +1,4 @@
-import java.util.InputMismatchException;
+import Character.*;
 import java.util.Scanner;
 
 public class Menu {
@@ -59,7 +59,7 @@ public class Menu {
         typeCharacter = this.menuChooseCharacterType();
         name = this.getCharacterName(typeCharacter);
 
-        if ( typeCharacter==CharacterType.MAGICIAN ) playerPersonnage = new Magicien(name);
+        if ( typeCharacter== CharacterType.MAGICIAN ) playerPersonnage = new Magicien(name);
         else playerPersonnage = new Guerrier(name);
 
         System.out.println("personnage créé!");
@@ -99,7 +99,7 @@ public class Menu {
         String characterName;
         do{
             consoleInput.nextLine();
-            System.out.println("Quel est le nom du future " + (typeCharacter==CharacterType.MAGICIAN?"magicien":"guerrier") + "." );
+            System.out.println("Quel est le nom du future " + (typeCharacter== CharacterType.MAGICIAN?"magicien":"guerrier") + "." );
             characterName = consoleInput.nextLine();
 
         }while(characterName.isEmpty());

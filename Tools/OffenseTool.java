@@ -1,3 +1,5 @@
+package Tools;
+
 public class OffenseTool {
     public String name;
     public int attackLevel;
@@ -7,7 +9,7 @@ public class OffenseTool {
         return this.name;
     }
 
-    OffenseTool(String name, int attack) {
+    public OffenseTool(String name, int attack) {
         this.name = name;
         this.attackLevel = attack;
     }

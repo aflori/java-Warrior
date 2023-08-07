@@ -1,5 +1,7 @@
+package Tools;
+
 public class Shield extends DefenseTool {
-    Shield(String name) {
+    public Shield(String name) {
         super(name);
     }
 }

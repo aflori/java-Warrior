@@ -1,7 +1,10 @@
+package Character;
+
+import Tools.*;
 
 public class Guerrier extends Personnage {
 
-    Guerrier() {
+    public Guerrier() {
         this.name = "";
         this.lifePoint = 5;
         this.attackPower = 5;
@@ -9,7 +12,7 @@ public class Guerrier extends Personnage {
         this.shield = null;
     }
 
-    Guerrier(String name) {
+    public Guerrier(String name) {
         this.name = name;
         this.lifePoint = 5;
         this.attackPower = 5;
@@ -17,7 +20,7 @@ public class Guerrier extends Personnage {
         this.shield = null;
     }
 
-    Guerrier(String Name, int lifePoint, int attackPower) {
+    public Guerrier(String Name, int lifePoint, int attackPower) {
         if (lifePoint < 5 || lifePoint > 10) {
             System.out.printf("%d est une valeur de points de vie invalide pour un magicien\n", lifePoint);
         }

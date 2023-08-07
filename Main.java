@@ -1,5 +1,5 @@
 import java.util.Random;
-
+import Character.*;
 
 public class Main {
 

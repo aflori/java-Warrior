@@ -1,6 +1,8 @@
+package Tools;
+
 public class Spell extends OffenseTool {
 
-    Spell(String name, int attack) {
+    public Spell(String name, int attack) {
         super(name, attack);
     }
 }

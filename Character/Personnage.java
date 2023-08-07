@@ -1,4 +1,6 @@
+package Character;
 
+import Tools.*;
 
 public abstract class Personnage {
     protected String name;
@@ -43,7 +45,7 @@ public abstract class Personnage {
         return this.weapon.name;
     }
 
-    //    public abstract void setNewWeapon(Weapon newWeapon);
+    //    public abstract void setNewWeapon(tools.Weapon newWeapon);
     public void renameWeapon(String newName) {
         this.weapon.name = newName;
     }

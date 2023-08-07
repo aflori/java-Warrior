@@ -1,8 +1,11 @@
+package Character;
+
+import Tools.*;
 
 public class Magicien extends Personnage {
 
 
-    Magicien() {
+    public Magicien() {
         this.name = "";
         this.lifePoint = 3;
         this.attackPower = 8;
@@ -10,7 +13,7 @@ public class Magicien extends Personnage {
         this.shield = null;
     }
 
-    Magicien(String name) {
+    public Magicien(String name) {
         this.name = name;
         this.lifePoint = 3;
         this.attackPower = 8;
@@ -18,7 +21,7 @@ public class Magicien extends Personnage {
         this.shield = null;
     }
 
-    Magicien(String Name, int lifePoint, int attackPower) {
+    public Magicien(String Name, int lifePoint, int attackPower) {
         if (lifePoint < 3 || lifePoint > 6)
             System.out.printf("%d est une valeur de points de vie invalide pour un magicien\n", lifePoint);
         if (attackPower < 8 || attackPower > 15)

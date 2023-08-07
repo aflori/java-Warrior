@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import Exception.PersonnageHorsPlateauException;
+import Character.*;
 
 public class BoardGame {
     private Personnage playerCharacter;
