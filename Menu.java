@@ -1,5 +1,7 @@
 import Character.*;
+
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
 public class Menu {
     public enum PossibleReturn {
@@ -15,37 +17,53 @@ public class Menu {
         this.didStartGame = false;
     }
 
-    public PossibleReturn showMenu()
-    {
-        int userInput;
-
-        do{
-            System.out.println("Que voulez-vous faire? (tapez le bon numéro):");
-            if(! didCreateCharacter ) System.out.println("1 - Créer un nouveau personnage");
-            else {
-                if(didStartGame) System.out.println("1 - Recommencer une partie");
-                else System.out.println("1 - Comencer la partie");
+    private int intInputUserFromConsole(String message, String[] options) {
+        int userInput = 0;
+        do {
+            System.out.println(message);
+            for (int i = 0; i < options.length; i++) {
+                System.out.println((i + 1) + " - " + options[i]);
             }
-            System.out.println("2 - Quitter le jeu");
-            userInput = consoleInput.nextInt();
+            try {
+                userInput = consoleInput.nextInt();
+            } catch (InputMismatchException e) {
+                System.err.println("Entrée invalide");
+                consoleInput.nextLine(); //buffer clean to avoid infinite loop
+                continue;
+            }
+        } while (userInput <= 0 || userInput > options.length);
 
-            switch (userInput) {
-                case 1 -> {
-                    if(!didCreateCharacter)
-                    {
-                        return PossibleReturn.CREATE_CHARACTER;
-                    }
-                    else
-                    {
-                        this.didStartGame = true;
-                        return PossibleReturn.START_GAME;
-                    }
-                }
-                case 2 -> {
-                    return PossibleReturn.QUIT_GAME;
+        return userInput;
+    }
+
+    public PossibleReturn showMenu() {
+        String[] option = {"Créer un nouveau personnage", "Quitter le jeu"};
+        if (didCreateCharacter) {
+            if (didStartGame) {
+                option[0] = "Recommencer une partie";
+            } else {
+                option[0] = "Commencer la partie";
+            }
+        }
+
+        int userInput = this.intInputUserFromConsole(
+                "Que voulez-vous faire? (tapez le bon numéro):",
+                option
+        );
+        switch (userInput) {
+            case 1 -> {
+                if (!didCreateCharacter) {
+                    return PossibleReturn.CREATE_CHARACTER;
+                } else {
+                    this.didStartGame = true;
+                    return PossibleReturn.START_GAME;
                 }
             }
-        }while( true );
+            case 2 -> {
+                return PossibleReturn.QUIT_GAME;
+            }
+        }
+        return PossibleReturn.START_GAME;
 
     }
 
@@ -59,7 +77,7 @@ public class Menu {
         typeCharacter = this.menuChooseCharacterType();
         name = this.getCharacterName(typeCharacter);
 
-        if ( typeCharacter== CharacterType.MAGICIAN ) playerPersonnage = new Magicien(name);
+        if (typeCharacter == CharacterType.MAGICIAN) playerPersonnage = new Magicien(name);
         else playerPersonnage = new Guerrier(name);
 
         System.out.println("personnage créé!");
@@ -77,82 +95,75 @@ public class Menu {
     /*----------------------------
     createCharacter specialized function
       ----------------------------*/
-    private CharacterType menuChooseCharacterType()
-    {
-        int inputNumber;
-        do{
-            System.out.println("Quelle type de personnage voulez-vous créer?");
-            System.out.println("1 - un magicien");
-            System.out.println("2 - un guerrier");
-            inputNumber = consoleInput.nextInt();
-        }while(inputNumber!=1 && inputNumber!=2);
-        switch (inputNumber){
-            case 1 -> { return CharacterType.MAGICIAN; }
-            case 2 -> { return CharacterType.WARRIOR; }
+    private CharacterType menuChooseCharacterType() {
+        int inputNumber = this.intInputUserFromConsole(
+                "Quelle type de personnage voulez-vous créer?",
+                new String[]{"un magicien", "un guerrier"}
+        );
+        switch (inputNumber) {
+            case 1 -> {
+                return CharacterType.MAGICIAN;
+            }
+            case 2 -> {
+                return CharacterType.WARRIOR;
+            }
         }
 
         //this line should never be executed
-        return  CharacterType.WARRIOR;
+        return CharacterType.WARRIOR;
     }
-    private String getCharacterName(CharacterType typeCharacter)
-    {
+
+    private String getCharacterName(CharacterType typeCharacter) {
         String characterName;
-        do{
-            consoleInput.nextLine();
-            System.out.println("Quel est le nom du future " + (typeCharacter== CharacterType.MAGICIAN?"magicien":"guerrier") + "." );
+        consoleInput.nextByte();
+        do {
+            System.out.println("Quel est le nom du future " + (typeCharacter == CharacterType.MAGICIAN ? "magicien" : "guerrier") + ".");
             characterName = consoleInput.nextLine();
 
-        }while(characterName.isEmpty());
+        } while (characterName.isEmpty());
 
         return characterName;
     }
 
-    private Personnage menuEditionCharacter(Personnage defaultConfig)
-    {
+    private Personnage menuEditionCharacter(Personnage defaultConfig) {
         CreationCharacterAction inputAnswer;
-        do{
+        do {
             inputAnswer = askCreationCharacterUserAction();
-            switch (inputAnswer)
-            {
+            switch (inputAnswer) {
                 case SHOW -> defaultConfig.printCharacterInformation();
                 case MODIFY -> this.modifieCharacterSettings(defaultConfig);
             }
-        }while( inputAnswer != CreationCharacterAction.END );
+        } while (inputAnswer != CreationCharacterAction.END);
 
         return defaultConfig;
     }
+
     private enum CreationCharacterAction {SHOW, MODIFY, END}
-    private CreationCharacterAction askCreationCharacterUserAction()
-    {
-        int inputAnswer;
-        do{
-            System.out.println("Création du personnage en cour, que voulez-vous faire?");
-            System.out.println("1 - Afficher les caractéristiques du personnage");
-            System.out.println("2 - Modifier les caractéristiques du personnage");
-            System.out.println("3 - Confirmer la selection");
 
-            inputAnswer = consoleInput.nextInt();
+    private CreationCharacterAction askCreationCharacterUserAction() {
+        int inputAnswer = this.intInputUserFromConsole(
+                "Création du personnage en cour, que voulez-vous faire?",
+                new String[]{"Afficher les caractéristiques du personnage", "Modifier les caractéristiques du personnage", "Confirmer la selection"}
+        );
 
-        }while(inputAnswer<=0 || inputAnswer>3);
-
-        switch (inputAnswer){
-            case 1 -> { return CreationCharacterAction.SHOW; }
-            case 2 -> { return CreationCharacterAction.MODIFY; }
-            default -> { return CreationCharacterAction.END; } // case 3
+        switch (inputAnswer) {
+            case 1 -> {
+                return CreationCharacterAction.SHOW;
+            }
+            case 2 -> {
+                return CreationCharacterAction.MODIFY;
+            }
+            default -> {
+                return CreationCharacterAction.END;
+            } // case 3
         }
     }
-    private void modifieCharacterSettings(Personnage character)
-    {
-        int inputValue;
 
-        do{
-            System.out.println("Que voulez-vous changer?");
-            System.out.println("1 - Le nom");
-            System.out.println("2 - Sa vie");
-            System.out.println("3 - Sa force d'attaque");
-
-            inputValue = consoleInput.nextInt();
-        }while(inputValue<1 || inputValue>3);
+    private void modifieCharacterSettings(Personnage character) {
+        int inputValue = this.intInputUserFromConsole(
+                "Que voulez-vous changer?",
+                new String[]{"Le nom", "Sa vie", "Sa force d'attaque"}
+        );
 
         if (inputValue == 1) {
             System.out.println("Entrez le nouveau nom");
