@@ -115,7 +115,7 @@ public class Menu {
 
     private String getCharacterName(CharacterType typeCharacter) {
         String characterName;
-        consoleInput.nextByte();
+        consoleInput.nextLine();
         do {
             System.out.println("Quel est le nom du future " + (typeCharacter == CharacterType.MAGICIAN ? "magicien" : "guerrier") + ".");
             characterName = consoleInput.nextLine();
