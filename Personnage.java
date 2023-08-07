@@ -31,11 +31,11 @@ public abstract class Personnage {
         this.name = newName;
     }
 
-    public void setLifePoint(int newPV) {
+    public void setStartLifePoint(int newPV) {
         this.lifePoint = newPV;
     }
 
-    public void setAttackPower(int newAP) {
+    public void setStartAttackPower(int newAP) {
         this.attackPower = newAP;
     }
 

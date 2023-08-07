@@ -1,12 +1,15 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Menu {
     public enum PossibleReturn {
         CREATE_CHARACTER, QUIT_GAME, START_GAME
     }
+
     private boolean didCreateCharacter;
     private boolean didStartGame;
     private static final Scanner consoleInput = new Scanner(System.in);
+
     Menu() {
         this.didCreateCharacter = false;
         this.didStartGame = false;
@@ -151,34 +154,25 @@ public class Menu {
             inputValue = consoleInput.nextInt();
         }while(inputValue<1 || inputValue>3);
 
-        switch (inputValue)
-        {
-            case 1 -> {
-                System.out.println("Entrez le nouveau nom");
-                String newName = "";
-                while(newName.isEmpty())
-                {
-                    newName = consoleInput.nextLine();
-                }
-                character.setName(newName);
+        if (inputValue == 1) {
+            System.out.println("Entrez le nouveau nom");
+            String newName = "";
+            while (newName.isEmpty()) {
+                newName = consoleInput.nextLine();
             }
-            case 2 -> {
-                System.out.println("Entrez sa nouvelle valeur de vie");
-                int newLifePoint=0;
-                while (newLifePoint<=0) //the character should be alive
-                {
-                    newLifePoint = consoleInput.nextInt();
-                }
-                character.setLifePoint(newLifePoint);
+            character.setName(newName);
+        } else {
+            System.out.println("Entrez sa nouvelle valeur " + (inputValue == 2 ? "de vie" : "d'attaque"));
+            int newValue = 0;
+            while (newValue <= 0) //the character should be alive
+            {
+                newValue = consoleInput.nextInt();
             }
-            case 3 -> {
-                System.out.println("Entrez sa nouvelle valeur d'attaque");
-                int newAttackPoint=0;
-                while (newAttackPoint<=0) //the character should stand on its feet
-                {
-                    newAttackPoint = consoleInput.nextInt();
-                }
-                character.setAttackPower(newAttackPoint);
+
+            if (inputValue == 2) {
+                character.setStartLifePoint(newValue);
+            } else {
+                character.setStartAttackPower(newValue);
             }
         }
     }

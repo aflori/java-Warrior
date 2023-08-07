@@ -32,7 +32,7 @@ public class Magicien extends Personnage {
     }
 
     @Override
-    public void setLifePoint(int newPV) {
+    public void setStartLifePoint(int newPV) {
         if (newPV < 3) {
             System.err.println("les points de vie d'un magicien doivent être d'au moins 3.");
             return;
@@ -41,11 +41,11 @@ public class Magicien extends Personnage {
             System.err.println("les points de vie d'un magicien ne peuvent pas être supérieur à 6.");
             return;
         }
-        super.setLifePoint(newPV);
+        super.setStartLifePoint(newPV);
     }
 
     @Override
-    public void setAttackPower(int newAtk) {
+    public void setStartAttackPower(int newAtk) {
         if (newAtk < 8) {
             System.err.println("les points d'attaque d'un magicien doivent être d'au moins 8.");
             return;
@@ -54,12 +54,12 @@ public class Magicien extends Personnage {
             System.err.println("les points de vie d'un magicien ne peuvent pas être supérieur à 15.");
             return;
         }
-        super.setAttackPower(newAtk);
+        super.setStartAttackPower(newAtk);
     }
 
     @Override
     public void printCharacterInformation() {
-        System.out.printf("Le magicien s'appel %s.\n", this.name);
+        System.out.printf("Le magicien s'appelle %s.\n", this.name);
         System.out.printf("Le magicien a %d PV et %d point de force.\n", this.lifePoint, this.attackPower);
         System.out.printf("Le magicien possède le sort %s.\n", this.weapon.name);
         if (this.shield == null) {
