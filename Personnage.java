@@ -8,6 +8,11 @@ public abstract class Personnage {
     protected OffenseTool weapon;
     protected DefenseTool shield;
 
+    @Override
+    public String toString() {
+        return this.name;
+    }
+
     public abstract void printCharacterInformation();
 
     public String getName() {
