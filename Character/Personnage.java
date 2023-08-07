@@ -1,6 +1,7 @@
 package Character;
 
-import Tools.*;
+import Tools.Defense.DefenseTool;
+import Tools.Offense.OffenseTool;
 
 public abstract class Personnage {
     protected String name;

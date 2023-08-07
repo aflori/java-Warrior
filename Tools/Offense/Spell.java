@@ -1,4 +1,4 @@
-package Tools;
+package Tools.Offense;
 
 public class Spell extends OffenseTool {
 

@@ -1,6 +1,6 @@
 package Character;
 
-import Tools.*;
+import Tools.Offense.Weapon;
 
 public class Guerrier extends Personnage {
 

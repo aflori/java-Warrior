@@ -1,6 +1,6 @@
 package Character;
 
-import Tools.*;
+import Tools.Offense.Spell;
 
 public class Magicien extends Personnage {
 

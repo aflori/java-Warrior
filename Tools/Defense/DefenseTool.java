@@ -1,4 +1,4 @@
-package Tools;
+package Tools.Defense;
 
 public abstract class DefenseTool {
     public String name;
