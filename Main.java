@@ -1,6 +1,7 @@
 import java.util.Random;
 import Character.*;
 
+import Exception.FinDePartie;
 public class Main {
 
     public static void main(String[] args) {
@@ -9,19 +10,23 @@ public class Main {
         Menu.PossibleReturn menuAction;
         BoardGame playerGame;
 
-        do {
+        try {
+            do {
 
-            menuAction = menu.showMenu();
+                menuAction = menu.showMenu();
 
-            switch (menuAction) {
+                switch (menuAction) {
 
-                case CREATE_CHARACTER -> playerCharacter = menu.menuToCreateCharacter();
-                case START_GAME -> {
-                    playerGame = new BoardGame(playerCharacter);
-                    playerGame.startGame(menu, playerCharacter);
+                    case CREATE_CHARACTER -> playerCharacter = menu.menuToCreateCharacter();
+                    case START_GAME -> {
+                        playerGame = new BoardGame(playerCharacter);
+                        playerGame.startGame(menu, playerCharacter);
+                    }
                 }
-            }
-        } while (menuAction != Menu.PossibleReturn.QUIT_GAME);
+            } while (menuAction != Menu.PossibleReturn.QUIT_GAME);
+        }
+        catch (FinDePartie ignored)
+        {}
 
         System.out.println("Merci d'avoir joué");
     }

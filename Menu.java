@@ -3,6 +3,8 @@ import Character.*;
 import java.util.Scanner;
 import java.util.InputMismatchException;
 
+import Exception.FinDePartie;
+
 public class Menu {
     public enum PossibleReturn {
         CREATE_CHARACTER, QUIT_GAME, START_GAME
@@ -67,7 +69,7 @@ public class Menu {
 
     }
 
-    public Personnage menuToCreateCharacter() {
+    public Personnage menuToCreateCharacter() throws FinDePartie {
         CharacterType typeCharacter;
         Personnage playerPersonnage;
         this.didCreateCharacter = true;
@@ -95,10 +97,10 @@ public class Menu {
     /*----------------------------
     createCharacter specialized function
       ----------------------------*/
-    private CharacterType menuChooseCharacterType() {
+    private CharacterType menuChooseCharacterType() throws FinDePartie {
         int inputNumber = this.intInputUserFromConsole(
                 "Quelle type de personnage voulez-vous créer?",
-                new String[]{"un magicien", "un guerrier"}
+                new String[]{"un magicien", "un guerrier", "quitter la partie"}
         );
         switch (inputNumber) {
             case 1 -> {
@@ -106,6 +108,9 @@ public class Menu {
             }
             case 2 -> {
                 return CharacterType.WARRIOR;
+            }
+            case 3 -> {
+                throw new FinDePartie();
             }
         }
 
@@ -125,7 +130,7 @@ public class Menu {
         return characterName;
     }
 
-    private Personnage menuEditionCharacter(Personnage defaultConfig) {
+    private Personnage menuEditionCharacter(Personnage defaultConfig) throws FinDePartie {
         CreationCharacterAction inputAnswer;
         do {
             inputAnswer = askCreationCharacterUserAction();
@@ -140,10 +145,14 @@ public class Menu {
 
     private enum CreationCharacterAction {SHOW, MODIFY, END}
 
-    private CreationCharacterAction askCreationCharacterUserAction() {
+    private CreationCharacterAction askCreationCharacterUserAction() throws FinDePartie {
         int inputAnswer = this.intInputUserFromConsole(
                 "Création du personnage en cour, que voulez-vous faire?",
-                new String[]{"Afficher les caractéristiques du personnage", "Modifier les caractéristiques du personnage", "Confirmer la selection"}
+                new String[]{"Afficher les caractéristiques du personnage",
+                        "Modifier les caractéristiques du personnage",
+                        "Confirmer la selection",
+                        "Quitter la partie"
+                }
         );
 
         switch (inputAnswer) {
@@ -153,18 +162,24 @@ public class Menu {
             case 2 -> {
                 return CreationCharacterAction.MODIFY;
             }
-            default -> {
+            case 3 -> {
                 return CreationCharacterAction.END;
-            } // case 3
+            }
+
+            default -> {
+                throw new FinDePartie();
+            }
         }
     }
 
-    private void modifieCharacterSettings(Personnage character) {
+    private void modifieCharacterSettings(Personnage character) throws FinDePartie {
         int inputValue = this.intInputUserFromConsole(
                 "Que voulez-vous changer?",
-                new String[]{"Le nom", "Sa vie", "Sa force d'attaque"}
+                new String[]{"Le nom", "Sa vie", "Sa force d'attaque", "Quitter la partie"}
         );
-
+        if (inputValue == 4) {
+            throw new FinDePartie();
+        }
         if (inputValue == 1) {
             System.out.println("Entrez le nouveau nom");
             String newName = "";
