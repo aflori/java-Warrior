@@ -1,3 +1,5 @@
+package GameElement;
+
 import java.util.Scanner;
 import Exception.PersonnageHorsPlateauException;
 import Character.*;
@@ -28,7 +30,7 @@ public class BoardGame {
                 throw new FinDePartie();
             }
 
-            int dice = Main.randomInt(1, 6);
+            int dice = Dice.randomInt(1, 6);
             System.out.printf("Vous avez fait %d au dé.\n", dice);
 
             try {
