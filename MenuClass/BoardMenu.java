@@ -1,6 +1,7 @@
 package MenuClass;
 
 import Character.Personnage;
+import Dice.*;
 import Exception.*;
 import GameElement.*;
 
@@ -19,8 +20,15 @@ public class BoardMenu {
         this.boardGame = new BoardGame();
     }
 
+    private void clearScannerBuffer()
+    {
+        while (!consoleInput.nextLine().isEmpty());
+    }
+
     public void startGame() throws FinDePartie {
+        this.clearScannerBuffer();
         do {
+            Dice dice = new DiceNFace(6);
             System.out.printf("Vous êtes sur la case %d / %d\n", this.boardGame.getPositionOnBoard(), this.boardGame.getEndingCase());
 
             System.out.print("Appuyez sur entrer pour jouer ou entrez \"q\" ou \"quit\" pour quitter la partie.\n");
@@ -30,16 +38,17 @@ public class BoardMenu {
                 throw new FinDePartie();
             }
 
-            int dice = Dice.randomInt(1, 6);
-            System.out.printf("Vous avez fait %d au dé.\n", dice);
+            int diceResult = dice.getDiceThrowResult();
+            System.out.printf("Vous avez fait %d au dé.\n", diceResult);
 
             try {
-                this.boardGame.deplaceCharacterByXCases(dice);
+                this.boardGame.deplaceCharacterByXCases(diceResult);
             } catch (PersonnageHorsPlateauException e) {
                 this.boardGame.setCharacterOnEndCase();
             }
 
-        } while (this.boardGame.isOnEndingCase());
+        } while (!this.boardGame.isOnEndingCase());
+        System.out.println("Félicitétions, vous avez gagné la partie car vous avez atteind la case final.");
     }
 
 
