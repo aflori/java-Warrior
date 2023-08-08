@@ -1,8 +1,8 @@
-package Dice;
+package Dice.DiceGeneric;
 
-import static Dice.DiceCommonFunction.randomInt;
+import Dice.Dice;
 
-public abstract class DiceNFace implements Dice{
+public abstract class DiceNFace implements Dice {
     protected final int numberFace;
 
     public DiceNFace(int numberOfFace){
@@ -10,6 +10,6 @@ public abstract class DiceNFace implements Dice{
     }
     @Override
     public int getDiceThrowResult() {
-        return randomInt(1, numberFace);
+        return DiceCommonFunction.randomInt(1, numberFace);
     }
 }

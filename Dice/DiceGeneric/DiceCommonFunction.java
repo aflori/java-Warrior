@@ -1,4 +1,4 @@
-package Dice;
+package Dice.DiceGeneric;
 
 import java.util.Random;
 
