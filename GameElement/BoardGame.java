@@ -4,7 +4,6 @@ import java.util.Scanner;
 import Exception.PersonnageHorsPlateauException;
 import Character.*;
 import Exception.FinDePartie;
-import MenuClass.BoardMenu;
 
 public class BoardGame {
     private Personnage playerCharacter;
@@ -17,7 +16,6 @@ public class BoardGame {
     }
 
     public void startGame() throws FinDePartie {
-        BoardMenu menu = new BoardMenu();
         Scanner scanner = new Scanner(System.in);
         System.out.printf("Vous êtes sur la case %d / %d\n", this.positionPersonnage, NB_CASE);
         do {

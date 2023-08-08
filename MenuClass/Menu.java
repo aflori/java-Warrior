@@ -59,8 +59,8 @@ public class Menu {
                 userInput = consoleInput.nextInt();
             } catch (InputMismatchException e) {
                 System.err.println("Entrée invalide");
-                consoleInput.nextLine(); //buffer clean to avoid infinite loop
-                continue;
+                //buffer clean to avoid infinite loop
+                consoleInput.nextLine();
             }
         } while (userInput <= 0 || userInput > options.length);
 
@@ -132,9 +132,7 @@ public class Menu {
             case 2 -> {
                 return CharacterType.WARRIOR;
             }
-            case 3 -> {
-                throw new FinDePartie();
-            }
+            case 3 -> throw new FinDePartie();
         }
 
         //this line should never be executed
@@ -188,9 +186,7 @@ public class Menu {
                 return CreationCharacterAction.END;
             }
 
-            default -> {
-                throw new FinDePartie();
-            }
+            default -> throw new FinDePartie();
         }
     }
 
