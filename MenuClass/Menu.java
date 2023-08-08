@@ -42,13 +42,12 @@ public class Menu  {
     }
 
     public PossibleReturn showMenu() {
-        String[] option = {"Créer un nouveau personnage", "Quitter le jeu"};
-        if (didCreateCharacter) {
-            if (didStartGame) {
-                option[0] = "Recommencer une partie";
-            } else {
-                option[0] = "Commencer la partie";
-            }
+        String[] option;
+        if(didCreateCharacter) {
+            option = new String[]{"Effacer et recréer ton personnage", "Commencer une nouvelle partie", "Quitter le jeu"};
+        }
+        else{
+            option = new String[]{"Créer ton personnage", "Quitter le jeu"};
         }
 
         int userInput = this.intInputUserFromConsole(
@@ -57,18 +56,14 @@ public class Menu  {
         );
         switch (userInput) {
             case 1 -> {
-                if (!didCreateCharacter) {
                     return PossibleReturn.CREATE_CHARACTER;
-                } else {
-                    this.didStartGame = true;
-                    return PossibleReturn.START_GAME;
-                }
             }
             case 2 -> {
+                if(didCreateCharacter) return PossibleReturn.START_GAME;
                 return PossibleReturn.QUIT_GAME;
             }
         }
-        return PossibleReturn.START_GAME;
+        return PossibleReturn.QUIT_GAME; // case 3
 
     }
 

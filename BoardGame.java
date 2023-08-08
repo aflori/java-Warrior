@@ -17,7 +17,7 @@ public class BoardGame {
     public void startGame() throws FinDePartie {
         BoardMenu menu = new BoardMenu();
         Scanner scanner = new Scanner(System.in);
-        System.out.printf("Vous êtes sur la case %d / %s\n", this.positionPersonnage, NB_CASE);
+        System.out.printf("Vous êtes sur la case %d / %d\n", this.positionPersonnage, NB_CASE);
         do {
             String inputLine;
             System.out.print("Appuyez sur entrer pour jouer ou entrez \"q\" ou \"quit\" pour quitter la partie.\n");
