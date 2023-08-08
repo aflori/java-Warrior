@@ -1,49 +1,33 @@
 package GameElement;
 
-import java.util.Scanner;
-import Exception.PersonnageHorsPlateauException;
-import Character.*;
-import Exception.FinDePartie;
+import Exception.*;
+//import Character.Personnage;
 
 public class BoardGame {
-    private Personnage playerCharacter;
     private int positionPersonnage;
     static private final int NB_CASE = 64;
 
-    public BoardGame(Personnage playerCharacter) {
-        this.playerCharacter = playerCharacter;
+    public BoardGame() {
         this.positionPersonnage = 1;
     }
 
-    public void startGame() throws FinDePartie {
-        Scanner scanner = new Scanner(System.in);
-        System.out.printf("Vous êtes sur la case %d / %d\n", this.positionPersonnage, NB_CASE);
-        do {
-            String inputLine;
-            System.out.print("Appuyez sur entrer pour jouer ou entrez \"q\" ou \"quit\" pour quitter la partie.\n");
-            inputLine = scanner.nextLine().toLowerCase();
-
-            if( inputLine.equals("q") || inputLine.equals("quit") )
-            {
-                throw new FinDePartie();
-            }
-
-            int dice = Dice.randomInt(1, 6);
-            System.out.printf("Vous avez fait %d au dé.\n", dice);
-
-            try {
-                this.characterMovement(dice);
-            } catch (PersonnageHorsPlateauException e) {
-                this.positionPersonnage = NB_CASE;
-            }
-
-            System.out.printf("Vous êtes sur la case %d / %d.\n", this.positionPersonnage, NB_CASE);
-        } while (this.positionPersonnage < NB_CASE);
-
-        System.out.println("Bien joué! Vous avez gagné!");
+    public int getPositionOnBoard() {
+        return this.positionPersonnage;
     }
 
-    public void characterMovement(int value) throws PersonnageHorsPlateauException {
+    public void setCharacterOnEndCase() {
+        this.positionPersonnage = NB_CASE;
+    }
+
+    public int getEndingCase() {
+        return NB_CASE;
+    }
+
+    public boolean isOnEndingCase() {
+        return NB_CASE == this.positionPersonnage;
+    }
+
+    public void deplaceCharacterByXCases(int value) throws PersonnageHorsPlateauException {
         this.positionPersonnage += value;
         if (this.positionPersonnage > NB_CASE) {
             throw new PersonnageHorsPlateauException();

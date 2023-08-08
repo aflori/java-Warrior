@@ -39,7 +39,7 @@ public class Menu {
 
                     case CREATE_CHARACTER -> playerCharacter = this.menuToCreateCharacter();
                     case START_GAME -> {
-                        BoardGame playerGame = new BoardGame(playerCharacter);
+                        BoardMenu playerGame = new BoardMenu(playerCharacter);
                         playerGame.startGame();
                     }
                 }
