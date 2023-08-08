@@ -28,7 +28,7 @@ public class BoardMenu {
     public void startGame() throws FinDePartie {
         this.clearScannerBuffer();
         do {
-            Dice dice = new DiceNFace(6);
+            Dice dice = new Dice6Face();
             System.out.printf("Vous êtes sur la case %d / %d\n", this.boardGame.getPositionOnBoard(), this.boardGame.getEndingCase());
 
             System.out.print("Appuyez sur entrer pour jouer ou entrez \"q\" ou \"quit\" pour quitter la partie.\n");

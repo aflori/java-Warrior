@@ -3,7 +3,7 @@ package Dice;
 import java.util.Random;
 
 //will be changed into package visibility
-class DiceOld {
+class DiceCommonFunction {
 
 
     private static final Random r = new Random();

@@ -1,9 +1,9 @@
 package Dice;
 
-import static Dice.DiceOld.randomInt;
+import static Dice.DiceCommonFunction.randomInt;
 
-public class DiceNFace implements Dice{
-    private final int numberFace;
+public abstract class DiceNFace implements Dice{
+    protected final int numberFace;
 
     public DiceNFace(int numberOfFace){
         this.numberFace = numberOfFace;
