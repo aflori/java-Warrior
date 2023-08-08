@@ -28,7 +28,7 @@ public class Menu {
 
     public void playGameMenu() {
         PossibleReturn menuAction;
-        Personnage playerCharacter=null;
+        Personnage playerCharacter = null;
 
         try {
             do {
@@ -211,13 +211,15 @@ public class Menu {
             character.setName(newName);
         } else {
             System.out.println("Entrez sa nouvelle valeur " + (inputValue == 2 ? "de vie" : "d'attaque"));
-            int newValue = 0;
-            while (newValue <= 0) //the character should be alive
-            {
+            int newValue = -1;
+            while (
+                    (inputValue == 2 && character.isValidStartLifePoint(newValue))
+                            || (inputValue == 3 && character.isValidStartAttackPoint(newValue))
+            ) {
                 try {
                     newValue = consoleInput.nextInt();
                 } catch (InputMismatchException ignored) {
-                    consoleInput.nextLine();
+                    consoleInput.nextLine(); //ignore the uncorrected line
                 }
             }
 
