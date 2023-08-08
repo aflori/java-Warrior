@@ -34,11 +34,11 @@ public abstract class Personnage {
         this.name = newName;
     }
 
-    public void setStartLifePoint(int newPV) {
+    public void setLifePoint(int newPV) {
         this.lifePoint = newPV;
     }
 
-    public void setStartAttackPower(int newAP) {
+    public void setAttackPower(int newAP) {
         this.attackPower = newAP;
     }
 
@@ -46,8 +46,11 @@ public abstract class Personnage {
         return this.weapon.name;
     }
 
-    //    public abstract void setNewWeapon(tools.Weapon newWeapon);
+    //    public abstract void setNewWeapon(OffenseTool newWeapon);
     public void renameWeapon(String newName) {
         this.weapon.name = newName;
     }
+
+    public abstract boolean isValidStartLifePoint(int lifePoint);
+    public abstract boolean isValidStartAttackPoint(int attackPoint);
 }

@@ -13,53 +13,17 @@ public class Guerrier extends Personnage {
     }
 
     public Guerrier(String name) {
+        this();
         this.name = name;
-        this.lifePoint = 5;
-        this.attackPower = 5;
-        this.weapon = new Weapon("épée en bois", 1);
-        this.shield = null;
     }
 
-    public Guerrier(String Name, int lifePoint, int attackPower) {
-        if (lifePoint < 5 || lifePoint > 10) {
-            System.out.printf("%d est une valeur de points de vie invalide pour un magicien\n", lifePoint);
-        }
-        if (attackPower < 5 || attackPower > 10) {
-            System.out.printf("%d est une valeur d'attaque invalide pour un magicien\n", attackPower);
-        }
+    public Guerrier(String name, int lifePoint, int attackPower) {
+        this(name);
 
-        this.name = Name;
         this.lifePoint = lifePoint;
         this.attackPower = attackPower;
-        this.weapon = new Weapon("wooden sword", 1);
-        this.shield = null;
     }
 
-    @Override
-    public void setStartLifePoint(int newPV) {
-        if (newPV < 5) {
-            System.err.println("les points de vie d'un guerrier doivent être d'au moins 5.");
-            return;
-        }
-        if (newPV > 10) {
-            System.err.println("les points de vie d'un guerrier ne peuvent pas être supérieur à 10.");
-            return;
-        }
-        super.setStartLifePoint(newPV);
-    }
-
-    @Override
-    public void setStartAttackPower(int newAtk) {
-        if (newAtk < 5) {
-            System.err.println("les points d'attaque d'un guerrier doivent être d'au moins 5.");
-            return;
-        }
-        if (newAtk > 10) {
-            System.err.println("les points de vie d'un guerrier ne peuvent pas être supérieur à 10.");
-            return;
-        }
-        super.setStartAttackPower(newAtk);
-    }
 
     @Override
     public void printCharacterInformation() {
@@ -72,4 +36,15 @@ public class Guerrier extends Personnage {
             System.out.printf("Le guerrier se protège avec %s.\n", this.shield.name);
         }
     }
+
+    @Override
+    public boolean isValidStartLifePoint(int lifePoint) {
+        return lifePoint >= 5 && lifePoint <= 10;
+    }
+
+    @Override
+    public boolean isValidStartAttackPoint(int attackPoint) {
+        return attackPoint >= 5 && attackPoint <= 10;
+    }
+
 }
