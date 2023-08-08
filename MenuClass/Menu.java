@@ -11,14 +11,14 @@ public class Menu  {
     public enum PossibleReturn {
         CREATE_CHARACTER, QUIT_GAME, START_GAME
     }
+    private enum CreationCharacterAction {SHOW, MODIFY, END}
+
 
     private boolean didCreateCharacter;
-    private boolean didStartGame;
     private final Scanner consoleInput;
 
     public Menu() {
         this.didCreateCharacter = false;
-        this.didStartGame = false;
         this.consoleInput = ScannerInput.getSingletonClass().consoleScanner;
     }
 
@@ -141,7 +141,6 @@ public class Menu  {
         return defaultConfig;
     }
 
-    private enum CreationCharacterAction {SHOW, MODIFY, END}
 
     private CreationCharacterAction askCreationCharacterUserAction() throws FinDePartie {
         int inputAnswer = this.intInputUserFromConsole(
@@ -194,9 +193,9 @@ public class Menu  {
             }
 
             if (inputValue == 2) {
-                character.setStartLifePoint(newValue);
+                character.setLifePoint(newValue);
             } else {
-                character.setStartAttackPower(newValue);
+                character.setAttackPower(newValue);
             }
         }
     }

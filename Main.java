@@ -1,6 +1,6 @@
 import java.util.Random;
-import Character.*;
 
+import Character.Personnage;
 import Exception.FinDePartie;
 import MenuClass.Menu;
 
