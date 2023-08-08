@@ -1,12 +1,10 @@
 package MenuClass;
 
-import java.util.Scanner;
-
-public class BoardMenu extends Menu{
+public class BoardMenu {
 
     public BoardMenu()
     {
-        super();
+
     }
 
 

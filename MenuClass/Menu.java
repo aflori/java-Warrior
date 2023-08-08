@@ -2,23 +2,24 @@ package MenuClass;
 
 import Character.*;
 
-import java.util.Scanner;
 import java.util.InputMismatchException;
+import java.util.Scanner;
 
 import Exception.FinDePartie;
 
-public class Menu {
+public class Menu  {
     public enum PossibleReturn {
         CREATE_CHARACTER, QUIT_GAME, START_GAME
     }
 
     private boolean didCreateCharacter;
     private boolean didStartGame;
-    protected static final Scanner consoleInput = new Scanner(System.in);
+    private final Scanner consoleInput;
 
     public Menu() {
         this.didCreateCharacter = false;
         this.didStartGame = false;
+        this.consoleInput = ScannerInput.getSingletonClass().consoleScanner;
     }
 
     private int intInputUserFromConsole(String message, String[] options) {
