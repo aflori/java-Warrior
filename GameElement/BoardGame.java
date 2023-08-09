@@ -1,8 +1,7 @@
 package GameElement;
 
 import Exception.*;
-import GameElement.CaseElement.Case;
-import GameElement.CaseElement.EmptyCase;
+import GameElement.CaseElement.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,9 +13,12 @@ public class BoardGame {
     public BoardGame() {
         positionPlayer = 1;
         caseContent = new ArrayList<Case>();
-        for(int i=0;i<64;i++){
-            caseContent.add(new EmptyCase());
-        }
+
+        caseContent.add(new EmptyCase());
+        caseContent.add(new EnemyCase());
+        caseContent.add(new WeaponCase());
+        caseContent.add(new PotionCase());
+
     }
 
     public int getEndingCase() {

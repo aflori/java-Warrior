@@ -18,7 +18,7 @@ public class Game {
         this.playerCharacter = playerCharacter;
         this.boardGame = new BoardGame();
         this.menu = new BoardMenu();
-        this.dice = new Dice6Face();
+        this.dice = new PipedDice1();
     }
 
 
