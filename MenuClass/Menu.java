@@ -7,7 +7,7 @@ import java.util.Scanner;
 import Character.*;
 import Exception.FinDePartie;
 import Character.Personnage;
-import GameElement.BoardGame;
+import GameElement.Game;
 
 public class Menu {
     private enum PossibleReturn {
@@ -39,8 +39,12 @@ public class Menu {
 
                     case CREATE_CHARACTER -> playerCharacter = this.menuToCreateCharacter();
                     case START_GAME -> {
-                        BoardMenu playerGame = new BoardMenu(playerCharacter);
-                        playerGame.startGame();
+                        Game playerGame = new Game(playerCharacter);
+                        while (!playerGame.isGameFinished()) {
+                            playerGame.play_a_turn();
+                        }
+                        if (playerGame.hasWon()) System.out.println("Bien joué, tu as gagné la partie");
+                        else System.out.println("Dommage, tu feras mieu la prochaine fois!");
                     }
                 }
             } while (menuAction != Menu.PossibleReturn.QUIT_GAME);

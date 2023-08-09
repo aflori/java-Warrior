@@ -1,22 +1,12 @@
 package GameElement;
 
 import Exception.*;
-//import Character.Personnage;
 
 public class BoardGame {
-    private int positionPersonnage;
     static private final int NB_CASE = 64;
-
+    private int positionPlayer;
     public BoardGame() {
-        this.positionPersonnage = 1;
-    }
-
-    public int getPositionOnBoard() {
-        return this.positionPersonnage;
-    }
-
-    public void setCharacterOnEndCase() {
-        this.positionPersonnage = NB_CASE;
+        positionPlayer = 1;
     }
 
     public int getEndingCase() {
@@ -24,13 +14,21 @@ public class BoardGame {
     }
 
     public boolean isOnEndingCase() {
-        return NB_CASE == this.positionPersonnage;
+        return NB_CASE == this.positionPlayer;
     }
 
-    public void deplaceCharacterByXCases(int value) throws PersonnageHorsPlateauException {
-        this.positionPersonnage += value;
-        if (this.positionPersonnage > NB_CASE) {
+    public void deplaceCharacter(int numberCaseToAdvance) throws PersonnageHorsPlateauException {
+        this.positionPlayer += numberCaseToAdvance;
+        if (this.positionPlayer > NB_CASE) {
             throw new PersonnageHorsPlateauException();
         }
+    }
+
+    public int getPlayerPosition() {
+        return this.positionPlayer;
+    }
+
+    public void setPlayerOnEndingCase(){
+        this.positionPlayer = NB_CASE;
     }
 }
