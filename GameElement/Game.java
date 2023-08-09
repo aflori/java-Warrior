@@ -1,6 +1,7 @@
 package GameElement;
 
 import Character.Personnage;
+import GameElement.CaseElement.Case;
 import MenuClass.BoardMenu;
 import Dice.Dice;        // interface
 import Dice.DiceClass.*; // implementations
@@ -40,7 +41,8 @@ public class Game {
             boardGame.setPlayerOnEndingCase();
         }
 
-        System.out.printf("Tu arrives sur une case %s.\n", this.boardGame.getPlayerCase());
+        Case currentPlayerPlace = this.boardGame.getPlayerCase();
+        System.out.printf("Tu arrives sur une case %s.\n", currentPlayerPlace);
     }
 
     public boolean hasWon() {
