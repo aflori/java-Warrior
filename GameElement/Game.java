@@ -1,7 +1,6 @@
 package GameElement;
 
 import Character.Personnage;
-import Dice.DiceClass.Dice6Face;
 import MenuClass.BoardMenu;
 import Dice.Dice;        // interface
 import Dice.DiceClass.*; // implementations

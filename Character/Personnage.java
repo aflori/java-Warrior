@@ -43,12 +43,12 @@ public abstract class Personnage {
     }
 
     public String getWeaponName() {
-        return this.weapon.name;
+        return this.weapon.getName();
     }
 
     //    public abstract void setNewWeapon(OffenseTool newWeapon);
     public void renameWeapon(String newName) {
-        this.weapon.name = newName;
+        this.weapon.setName(newName);
     }
 
     public abstract boolean isValidStartLifePoint(int lifePoint);

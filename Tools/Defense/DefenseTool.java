@@ -1,7 +1,7 @@
 package Tools.Defense;
 
 public abstract class DefenseTool {
-    public String name;
+    protected String name;
 
     public DefenseTool(String name) {
         this.name = name;
@@ -10,6 +10,14 @@ public abstract class DefenseTool {
     @Override
     public String toString() {
         return this.name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
 

@@ -29,11 +29,11 @@ public class Guerrier extends Personnage {
     public void printCharacterInformation() {
         System.out.printf("Le guerrier s'appelle %s.\n", this.name);
         System.out.printf("Le guerrier a %d PV et %d point de force.\n", this.lifePoint, this.attackPower);
-        System.out.printf("Le guerrier possède l'arme %s.\n", this.weapon.name);
+        System.out.printf("Le guerrier possède l'arme %s.\n", this.weapon.getName());
         if (this.shield == null) {
             System.out.print("Le guerrier n'a pas de bouclier.\n");
         } else {
-            System.out.printf("Le guerrier se protège avec %s.\n", this.shield.name);
+            System.out.printf("Le guerrier se protège avec %s.\n", this.shield.getName());
         }
     }
 

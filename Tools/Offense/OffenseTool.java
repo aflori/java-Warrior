@@ -1,8 +1,8 @@
 package Tools.Offense;
 
-public class OffenseTool {
-    public String name;
-    public int attackLevel;
+public abstract class OffenseTool {
+    protected String name;
+    protected int attackLevel;
 
     @Override
     public String toString() {
@@ -12,5 +12,13 @@ public class OffenseTool {
     public OffenseTool(String name, int attack) {
         this.name = name;
         this.attackLevel = attack;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

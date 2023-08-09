@@ -30,11 +30,11 @@ public class Magicien extends Personnage {
     public void printCharacterInformation() {
         System.out.printf("Le magicien s'appelle %s.\n", this.name);
         System.out.printf("Le magicien a %d PV et %d point de force.\n", this.lifePoint, this.attackPower);
-        System.out.printf("Le magicien possède le sort %s.\n", this.weapon.name);
+        System.out.printf("Le magicien possède le sort %s.\n", this.weapon.getName());
         if (this.shield == null) {
             System.out.print("Le magicien n'a pas de philtre.\n");
         } else {
-            System.out.printf("Le magicien a un philtre de %s.\n", this.shield.name);
+            System.out.printf("Le magicien a un philtre de %s.\n", this.shield.getName());
         }
     }
 
