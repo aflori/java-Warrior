@@ -28,6 +28,8 @@ public class Game {
 
     public void play_a_turn() throws FinDePartie {
         System.out.printf("tu es sur la case %d / %d\n", this.boardGame.getPlayerPosition(), this.boardGame.getEndingCase());
+        System.out.printf("Tu arrives sur une case %s.\n", this.boardGame.getPlayerCase());
+
 
         this.menu.waitInputToPlay();
 
@@ -40,6 +42,8 @@ public class Game {
         } catch (PersonnageHorsPlateauException e) {
             boardGame.setPlayerOnEndingCase();
         }
+
+
     }
 
     public boolean hasWon() {

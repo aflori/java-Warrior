@@ -43,4 +43,8 @@ public class BoardGame {
     public void setPlayerOnEndingCase(){
         this.positionPlayer = caseContent.size();
     }
+
+    public Case getPlayerCase() {
+        return caseContent.get(positionPlayer-1);
+    }
 }
