@@ -28,8 +28,6 @@ public class Game {
 
     public void play_a_turn() throws FinDePartie {
         System.out.printf("tu es sur la case %d / %d\n", this.boardGame.getPlayerPosition(), this.boardGame.getEndingCase());
-        System.out.printf("Tu arrives sur une case %s.\n", this.boardGame.getPlayerCase());
-
 
         this.menu.waitInputToPlay();
 
@@ -43,10 +41,19 @@ public class Game {
             boardGame.setPlayerOnEndingCase();
         }
 
-
+        System.out.printf("Tu arrives sur une case %s.\n", this.boardGame.getPlayerCase());
     }
 
     public boolean hasWon() {
         return this.boardGame.isOnEndingCase();
+    }
+
+    public void startGame() throws FinDePartie {
+        while (!this.isGameFinished()) {
+            this.play_a_turn();
+        }
+
+        if (this.hasWon()) System.out.println("Bien joué, tu as gagné la partie");
+        else System.out.println("Dommage, tu feras mieu la prochaine fois!");
     }
 }

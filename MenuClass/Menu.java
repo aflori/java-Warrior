@@ -7,7 +7,6 @@ import java.util.Scanner;
 import Character.*;
 import Exception.FinDePartie;
 import Character.Personnage;
-import GameElement.Game;
 
 public class Menu {
     private enum PossibleReturn {
@@ -26,30 +25,25 @@ public class Menu {
     }
 
 
-    public void playGameMenu() {
+    public Personnage playGameMenu() throws FinDePartie {
         PossibleReturn menuAction;
         Personnage playerCharacter = null;
 
-        try {
-            do {
+        do {
 
-                menuAction = this.showMenu();
+            menuAction = this.showMenu();
 
-                switch (menuAction) {
+            switch (menuAction) {
 
-                    case CREATE_CHARACTER -> playerCharacter = this.menuToCreateCharacter();
-                    case START_GAME -> {
-                        Game playerGame = new Game(playerCharacter);
-                        while (!playerGame.isGameFinished()) {
-                            playerGame.play_a_turn();
-                        }
-                        if (playerGame.hasWon()) System.out.println("Bien joué, tu as gagné la partie");
-                        else System.out.println("Dommage, tu feras mieu la prochaine fois!");
-                    }
+                case CREATE_CHARACTER -> playerCharacter = this.menuToCreateCharacter();
+                case START_GAME -> {
+                    return playerCharacter;
                 }
-            } while (menuAction != Menu.PossibleReturn.QUIT_GAME);
-        } catch (FinDePartie ignored) {
-        }
+            }
+        } while (menuAction != Menu.PossibleReturn.QUIT_GAME);
+
+        return playerCharacter;
+
     }
 
     private int intInputUserFromConsole(String message, String[] options) {
@@ -66,15 +60,15 @@ public class Menu {
                 //buffer clean to avoid infinite loop
                 consoleInput.nextLine();
             }
-        } while (userInput <= 0 || userInput > options.length);
+        } while (userInput < 1 || userInput > options.length);
 
         return userInput;
     }
 
-    private PossibleReturn showMenu() {
+    private PossibleReturn showMenu() throws FinDePartie {
         String[] option;
         if (didCreateCharacter) {
-            option = new String[]{"Effacer et recréer ton personnage", "Commencer une nouvelle partie", "Quitter le jeu"};
+            option = new String[]{"Effacer puis recréer ton personnage", "Commencer une nouvelle partie", "Quitter le jeu"};
         } else {
             option = new String[]{"Créer ton personnage", "Quitter le jeu"};
         }
@@ -89,10 +83,9 @@ public class Menu {
             }
             case 2 -> {
                 if (didCreateCharacter) return PossibleReturn.START_GAME;
-                return PossibleReturn.QUIT_GAME;
             }
         }
-        return PossibleReturn.QUIT_GAME; // case 3
+        throw new FinDePartie();
 
     }
 
