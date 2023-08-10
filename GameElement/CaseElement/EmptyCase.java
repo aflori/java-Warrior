@@ -11,6 +11,6 @@ public class EmptyCase extends Case{
 
     @Override
     public void interaction(Personnage playerChoice) {
-        //pass
+        System.out.println("La case ne contien rien");
     }
 }

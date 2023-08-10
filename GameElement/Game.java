@@ -41,8 +41,9 @@ public class Game {
             boardGame.setPlayerOnEndingCase();
         }
 
+        System.out.printf("Tu arrives sur la case %d.\n", this.boardGame.getPlayerPosition());
         Case currentPlayerPlace = this.boardGame.getPlayerCase();
-        System.out.printf("Tu arrives sur une case %s.\n", currentPlayerPlace);
+        currentPlayerPlace.interaction(this.playerCharacter);
     }
 
     public boolean hasWon() {

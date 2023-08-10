@@ -11,7 +11,10 @@ public class SpellCase extends Case {
     @Override
     public void interaction(Personnage playerChoice) {
         if (playerChoice instanceof Guerrier) {
-            return;
+            System.out.println("La case ne contien rien.");
+        }
+        else {
+            System.out.println("La case contien une sort.");
         }
     }
 }

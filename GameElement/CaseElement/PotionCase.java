@@ -11,7 +11,7 @@ public class PotionCase extends Case{
 
     @Override
     public void interaction(Personnage playerChoice) {
-        //pass
+        System.out.println("La case contien une potion de vie");
     }
 
 }

@@ -12,8 +12,12 @@ public class WeaponCase extends Case {
     @Override
     public void interaction(Personnage playerChoice) {
         if (playerChoice instanceof Magicien) {
-            return;
+            System.out.println("La case ne contien rien.");
         }
+        else {
+            System.out.println("La case contien une arme.");
+        }
+
     }
 }
 

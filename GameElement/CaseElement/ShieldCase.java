@@ -12,7 +12,10 @@ public class ShieldCase extends Case{
     public void interaction(Personnage playerChoice) {
         //pass
         if(playerChoice instanceof Magicien) {
-            return;
+            System.out.println("La case ne contien rien.");
+        }
+        else {
+            System.out.println("La case contien un bouclier");
         }
     }
 }

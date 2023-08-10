@@ -11,6 +11,6 @@ public class SurpriseBoxCase extends Case{
 
     @Override
     public void interaction(Personnage playerChoice) {
-        //pass
+        System.out.println("Il y a une caisse surprise ici!");
     }
 }

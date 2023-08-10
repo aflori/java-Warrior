@@ -9,7 +9,7 @@ import java.util.List;
 public class BoardGame {
 //    static private final int NB_CASE = 64;
     private int positionPlayer;
-    private List<Case> caseContent;
+    private final List<Case> caseContent;
     public BoardGame() {
         positionPlayer = 1;
         caseContent = new ArrayList<Case>();
@@ -18,6 +18,8 @@ public class BoardGame {
         caseContent.add(new EnemyCase());
         caseContent.add(new WeaponCase());
         caseContent.add(new PotionCase());
+        caseContent.add(new SpellCase());
+        caseContent.add(new EmptyCase());
 
     }
 
