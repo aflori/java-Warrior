@@ -12,6 +12,7 @@ public abstract class MonsterEnemy {
 
     public void takeDamage(int damageTaken) {
         lifePoint -= damageTaken;
+        if (lifePoint < 0) lifePoint = 0;
     }
 
     public int getAttackPower() {
@@ -21,6 +22,11 @@ public abstract class MonsterEnemy {
     public String getName() {
         return name;
     }
+
+    public int getLifePoint() {
+        return lifePoint;
+    }
+
     public String toString() {
         return name;
     }

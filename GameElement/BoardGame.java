@@ -1,5 +1,6 @@
 package GameElement;
 
+import Enemy.Dragon;
 import Exception.*;
 import GameElement.CaseElement.*;
 
@@ -7,15 +8,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BoardGame {
-//    static private final int NB_CASE = 64;
+    //    static private final int NB_CASE = 64;
     private int positionPlayer;
     private final List<Case> caseContent;
+
     public BoardGame() {
         positionPlayer = 1;
         caseContent = new ArrayList<Case>();
 
         caseContent.add(new EmptyCase());
-        caseContent.add(new EnemyCase("Michel sauvage"));
+        caseContent.add(new EnemyCase(new Dragon()));
         caseContent.add(new WeaponCase("épée en pierre", 4));
         caseContent.add(new PotionCase("potion de vie", 2));
         caseContent.add(new SpellCase("éclaire", 3));
@@ -42,11 +44,11 @@ public class BoardGame {
         return this.positionPlayer;
     }
 
-    public void setPlayerOnEndingCase(){
+    public void setPlayerOnEndingCase() {
         this.positionPlayer = caseContent.size();
     }
 
     public Case getPlayerCase() {
-        return caseContent.get(positionPlayer-1);
+        return caseContent.get(positionPlayer - 1);
     }
 }

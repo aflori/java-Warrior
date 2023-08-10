@@ -51,6 +51,7 @@ public abstract class Personnage {
     }
 
     public abstract boolean isValidStartLifePoint(int lifePoint);
+
     public abstract boolean isValidStartAttackPoint(int attackPoint);
 
     //must choose the right subclass
@@ -59,4 +60,9 @@ public abstract class Personnage {
     }
 
     public abstract void heal(int healthRestored);
+
+    public void takeDamage(int damageTaken) {
+        this.lifePoint -= damageTaken;
+        if (this.lifePoint < 0) this.lifePoint = 0;
+    }
 }
