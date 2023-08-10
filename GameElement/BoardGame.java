@@ -15,7 +15,7 @@ public class BoardGame {
         caseContent = new ArrayList<Case>();
 
         caseContent.add(new EmptyCase());
-        caseContent.add(new EnemyCase());
+        caseContent.add(new EnemyCase("Michel sauvage"));
         caseContent.add(new WeaponCase("épée en pierre", 4));
         caseContent.add(new PotionCase("potion de vie", 2));
         caseContent.add(new SpellCase("éclaire", 3));
