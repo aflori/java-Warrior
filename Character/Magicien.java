@@ -47,4 +47,10 @@ public class Magicien extends Personnage {
     public boolean isValidStartAttackPoint(int attackPoint) {
         return attackPoint >= 8 && attackPoint <= 15;
     }
+
+    @Override
+    public void heal(int healthRestored) {
+        this.lifePoint += healthRestored;
+        if (this.lifePoint > 6) this.lifePoint = 6;
+    }
 }

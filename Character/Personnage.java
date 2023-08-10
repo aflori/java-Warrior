@@ -57,4 +57,6 @@ public abstract class Personnage {
     public void setNewWeapon(OffenseTool tool) {
         this.weapon = tool;
     }
+
+    public abstract void heal(int healthRestored);
 }

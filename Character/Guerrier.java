@@ -47,4 +47,10 @@ public class Guerrier extends Personnage {
         return attackPoint >= 5 && attackPoint <= 10;
     }
 
+    @Override
+    public void heal(int healthRestored) {
+        this.lifePoint += healthRestored;
+        if (this.lifePoint > 10) this.lifePoint = 10;
+    }
+
 }

@@ -1,8 +1,10 @@
 package MenuClass;
 
+import Tools.Health;
 import Tools.Offense.*;
 import Tools.Defense.*;
 import Character.*;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Scanner;
 
@@ -15,7 +17,7 @@ public class CaseMenu {
     }
 
     //return value: if yes or not, wizard has taken the available spell
-    public boolean askToTakeSpell(Magicien playerChoice, Spell spell) {
+    public boolean askToTakeSpell(Magicien playerChoice, @NotNull Spell spell) {
 
         System.out.println("Tu arrives sur une case bonus.");
         System.out.println("Il y a le sort " + spell.getName() + ".");
@@ -26,7 +28,7 @@ public class CaseMenu {
         return this.getYesNoUserAnswer();
     }
 
-    public boolean askToTakeAWeapon(Guerrier playerChoice, Weapon weapon) {
+    public boolean askToTakeAWeapon(Guerrier playerChoice, @NotNull Weapon weapon) {
 
         System.out.println("Tu arrives sur une case bonus.");
         System.out.println("Il y a sur le sol une " + weapon.getName() + ".");
@@ -37,6 +39,10 @@ public class CaseMenu {
         return this.getYesNoUserAnswer();
     }
 
+    public boolean askToTakeAPotion(@NotNull Personnage playerCharacter, @NotNull Health potion) {
+        System.out.printf("Tu as %d PV et tu peut utiliser une %s qui soigne %d PV. L'utiliser?\n", playerCharacter.getLifePoint(), potion.getName(), potion.getHealthRestored());
+        return this.getYesNoUserAnswer();
+    }
 
     private boolean getYesNoUserAnswer() {
         String userInput;
