@@ -1,7 +1,8 @@
 package MenuClass;
 
-import Tools.Offense.Spell;
-import Character.Magicien;
+import Tools.Offense.*;
+import Tools.Defense.*;
+import Character.*;
 
 import java.util.Scanner;
 
@@ -19,6 +20,17 @@ public class CaseMenu {
         System.out.println("Tu arrives sur une case bonus.");
         System.out.println("Il y a le sort " + spell.getName() + ".");
         System.out.println("Il a une valeur d'attaque de " + spell.getAttackLevel() + ".");
+
+        System.out.println("Doit-on la prendre ([Y]es/[n]o)?");
+
+        return this.getYesNoUserAnswer();
+    }
+
+    public boolean askToTakeAWeapon(Guerrier playerChoice, Weapon weapon) {
+
+        System.out.println("Tu arrives sur une case bonus.");
+        System.out.println("Il y a sur le sol une " + weapon.getName() + ".");
+        System.out.println("Qui a une valeur d'attaque de " + weapon.getAttackLevel() + ".");
 
         System.out.println("Doit-on la prendre ([Y]es/[n]o)?");
 
