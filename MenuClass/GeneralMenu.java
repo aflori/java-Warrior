@@ -40,9 +40,7 @@ public class GeneralMenu {
                     return playerCharacter;
                 }
             }
-        } while (menuAction != GeneralMenu.PossibleReturn.QUIT_GAME);
-
-        return playerCharacter;
+        } while (true);
 
     }
 
@@ -206,13 +204,19 @@ public class GeneralMenu {
             System.out.println("Entrez sa nouvelle valeur " + (inputValue == 2 ? "de vie" : "d'attaque"));
             int newValue = -1;
             while (
-                    (inputValue == 2 && character.isValidStartLifePoint(newValue))
-                            || (inputValue == 3 && character.isValidStartAttackPoint(newValue))
+                    (inputValue == 2 && !character.isValidStartLifePoint(newValue))
+                            || (inputValue == 3 && !character.isValidStartAttackPoint(newValue))
             ) {
                 try {
                     newValue = consoleInput.nextInt();
+                    if(   (inputValue == 2 && !character.isValidStartLifePoint(newValue))
+                       || (inputValue == 3 && !character.isValidStartAttackPoint(newValue))
+                    ) {
+                        System.err.println("Valeur invalide!");
+                    }
                 } catch (InputMismatchException ignored) {
                     consoleInput.nextLine(); //ignore the uncorrected line
+                    System.err.println("Ceci n'est pas un nombre!");
                 }
             }
 

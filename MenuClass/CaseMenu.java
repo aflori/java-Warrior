@@ -40,7 +40,7 @@ public class CaseMenu {
     }
 
     public boolean askToTakeAPotion(@NotNull Personnage playerCharacter, @NotNull Health potion) {
-        System.out.printf("Tu as %d PV et tu peut utiliser une %s qui soigne %d PV. L'utiliser?\n", playerCharacter.getLifePoint(), potion.getName(), potion.getHealthRestored());
+        System.out.printf("Tu as %d PV et tu peut utiliser une %s qui soigne %d PV. L'utiliser ([Y]es/[n]o)?\n", playerCharacter.getLifePoint(), potion.getName(), potion.getHealthRestored());
         return this.getYesNoUserAnswer();
     }
 
