@@ -18,7 +18,7 @@ public class BoardGame {
         caseContent.add(new EnemyCase());
         caseContent.add(new WeaponCase());
         caseContent.add(new PotionCase());
-        caseContent.add(new SpellCase());
+        caseContent.add(new SpellCase("éclaire", 3));
         caseContent.add(new EmptyCase());
 
     }

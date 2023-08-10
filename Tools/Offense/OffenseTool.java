@@ -21,4 +21,6 @@ public abstract class OffenseTool {
     public void setName(String name) {
         this.name = name;
     }
+
+    public int getAttackLevel(){ return this.attackLevel; }
 }

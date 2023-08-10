@@ -1,14 +1,13 @@
 
 import GameElement.Game;
-import MenuClass.Menu;
+import MenuClass.GeneralMenu;
 import Exception.FinDePartie;
 import Character.Personnage;
-import Character.Guerrier;
 
 public class Main {
 
     public static void main(String[] args) {
-        Menu menu = new Menu();
+        GeneralMenu menu = new GeneralMenu();
         Game game = null;
         try {
             while(true) {

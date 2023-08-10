@@ -46,11 +46,15 @@ public abstract class Personnage {
         return this.weapon.getName();
     }
 
-    //    public abstract void setNewWeapon(OffenseTool newWeapon);
     public void renameWeapon(String newName) {
         this.weapon.setName(newName);
     }
 
     public abstract boolean isValidStartLifePoint(int lifePoint);
     public abstract boolean isValidStartAttackPoint(int attackPoint);
+
+    //must choose the right subclass
+    public void setNewWeapon(OffenseTool tool) {
+        this.weapon = tool;
+    }
 }

@@ -8,7 +8,7 @@ import Character.*;
 import Exception.FinDePartie;
 import Character.Personnage;
 
-public class Menu {
+public class GeneralMenu {
     private enum PossibleReturn {
         CREATE_CHARACTER, QUIT_GAME, START_GAME
     }
@@ -19,7 +19,7 @@ public class Menu {
     private boolean didCreateCharacter;
     private final Scanner consoleInput;
 
-    public Menu() {
+    public GeneralMenu() {
         this.didCreateCharacter = false;
         this.consoleInput = ScannerInput.getSingletonClass().consoleScanner;
     }
@@ -40,7 +40,7 @@ public class Menu {
                     return playerCharacter;
                 }
             }
-        } while (menuAction != Menu.PossibleReturn.QUIT_GAME);
+        } while (menuAction != GeneralMenu.PossibleReturn.QUIT_GAME);
 
         return playerCharacter;
 
