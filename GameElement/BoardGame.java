@@ -31,7 +31,7 @@ public class BoardGame {
         return caseContent.size() == this.positionPlayer;
     }
 
-    public void deplaceCharacter(int numberCaseToAdvance) throws PersonnageHorsPlateauException {
+    public void moveCharacter(int numberCaseToAdvance) throws PersonnageHorsPlateauException {
         this.positionPlayer += numberCaseToAdvance;
         if (this.positionPlayer > caseContent.size()) {
             throw new PersonnageHorsPlateauException();

@@ -9,7 +9,7 @@ public class Magicien extends Personnage {
         this.name = "";
         this.lifePoint = 3;
         this.attackPower = 8;
-        this.weapon = new Spell("simple fireball", 1);
+        this.weapon = new Spell("small fireball", 1);
         this.shield = null;
     }
 

@@ -36,7 +36,7 @@ public class Game {
         System.out.printf("tu as fait %d au dé\n", diceResult);
 
         try {
-            boardGame.deplaceCharacter( diceResult);
+            boardGame.moveCharacter( diceResult);
         } catch (PersonnageHorsPlateauException e) {
             boardGame.setPlayerOnEndingCase();
         }
