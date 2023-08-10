@@ -28,7 +28,7 @@ public class PotionCase extends Case{
     @Override
     public void interaction(Personnage playerChoice) {
         if(this.potion==null) {
-            System.out.println("Cette case ne contien rien.");
+            super.interaction(playerChoice);
             return;
         }
         CaseMenu menu = new CaseMenu();

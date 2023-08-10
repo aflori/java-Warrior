@@ -9,8 +9,5 @@ public class EmptyCase extends Case{
         return "Case vide";
     }
 
-    @Override
-    public void interaction(Personnage playerChoice) {
-        System.out.println("La case ne contien rien");
-    }
+
 }

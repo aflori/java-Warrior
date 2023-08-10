@@ -27,7 +27,7 @@ public class SpellCase extends Case {
     @Override
     public void interaction(Personnage playerChoice) {
         if (playerChoice instanceof Guerrier || this.spellContent == null) {
-            System.out.println("La case ne contien rien.");
+            super.interaction(playerChoice);
             return;
         }
         CaseMenu menu = new CaseMenu();

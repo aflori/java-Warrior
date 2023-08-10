@@ -8,8 +8,4 @@ public class EnemyCase extends Case{
         return "Case ennemi";
     }
 
-    @Override
-    public void interaction(Personnage playerChoice) {
-        System.out.println("Un villain ennemi est sur la case!");
-    }
 }

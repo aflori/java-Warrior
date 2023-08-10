@@ -8,8 +8,5 @@ public class PhilterCase extends Case{
         return "Case philtre";
     }
 
-    @Override
-    public void interaction(Personnage playerChoice) {
 
-    }
 }

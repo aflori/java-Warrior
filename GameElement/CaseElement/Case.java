@@ -10,5 +10,7 @@ public abstract class Case {
     @Override
     public abstract String toString();
 
-    public abstract void interaction(Personnage playerChoice);
+    public void interaction(Personnage playerChoice) {
+        System.out.println("Un villain ennemi est sur la case!");
+    }
 }

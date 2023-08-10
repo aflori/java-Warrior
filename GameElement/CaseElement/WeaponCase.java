@@ -26,7 +26,7 @@ public class WeaponCase extends Case {
     @Override
     public void interaction(Personnage playerChoice) {
         if (playerChoice instanceof Magicien || this.weaponContent == null) {
-            System.out.println("La case ne contien rien.");
+            super.interaction(playerChoice);
             return;
         }
         CaseMenu menu = new CaseMenu();
