@@ -2,15 +2,16 @@ package GameElement.CaseElement;
 
 import Character.*;
 
-public class SurpriseBoxCase extends Case{
-
+public class SpellCase extends Case {
     @Override
     public String toString() {
-        return "Case surprise";
+        return "Case sort";
     }
 
     @Override
     public void interaction(Personnage playerChoice) {
-        //pass
+        if (playerChoice instanceof Guerrier) {
+            return;
+        }
     }
 }
