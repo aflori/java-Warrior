@@ -6,7 +6,6 @@ import Enemy.Wizard;
 import Exception.*;
 import GameElement.CaseElement.*;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,14 +13,13 @@ public class BoardGame {
 
     //    static private final int NB_CASE = 64;
     private int positionPlayer;
-    private final List<Case> caseContent;
+    private List<Case> caseContent;
 
     public BoardGame() {
         positionPlayer = 1;
 
 
-        Case[] baseElement = {new SpellCase("éclair", 2), new WeaponCase("massues", 3), new EnemyCase(new Goblin()), new SpellCase("éclair", 2), new WeaponCase("massues", 3), new EnemyCase(new Goblin()), new PotionCase("potion", 2), new SpellCase("éclair", 2), new EnemyCase(new Goblin()), new EnemyCase(new Wizard()), new WeaponCase("massues", 3), new EnemyCase(new Goblin()), new PotionCase("potion", 2), new EmptyCase(), new EnemyCase(new Goblin()), new EmptyCase(), new SpellCase("éclair", 2), new EnemyCase(new Goblin()), new WeaponCase("épée", 5), new EnemyCase(new Wizard()), new EnemyCase(new Goblin()), new WeaponCase("massues", 3), new SpellCase("éclair", 2), new EnemyCase(new Goblin()), new EnemyCase(new Wizard()), new WeaponCase("épée", 5), new EnemyCase(new Goblin()), new PotionCase("grande potion", 5), new EmptyCase(), new EnemyCase(new Goblin()), new PotionCase("potion", 2), new EnemyCase(new Wizard()), new PotionCase("potion", 2), new EmptyCase(), new EnemyCase(new Wizard()), new EnemyCase(new Wizard()), new EnemyCase(new Wizard()), new WeaponCase("massues", 3), new PotionCase("potion", 2), new EnemyCase(new Wizard()), new PotionCase("grande potion", 5), new WeaponCase("épée", 5), new PotionCase("potion", 2), new EnemyCase(new Wizard()), new EnemyCase(new Dragon()), new EmptyCase(), new EnemyCase(new Wizard()), new SpellCase("boules de feu", 7), new SpellCase("boules de feu", 7), new EmptyCase(), new EmptyCase(), new EnemyCase(new Dragon()), new WeaponCase("épée", 5), new EmptyCase(), new EmptyCase(), new EnemyCase(new Dragon()), new EmptyCase(), new EmptyCase(), new EmptyCase(), new EmptyCase(), new EmptyCase(), new EnemyCase(new Dragon()), new EmptyCase(), new EmptyCase()};
-        caseContent = Arrays.asList(baseElement);
+        this.generateBoardWithRandomCase();
     }
 
     public int getEndingCase() {
@@ -49,5 +47,10 @@ public class BoardGame {
 
     public Case getPlayerCase() {
         return caseContent.get(positionPlayer - 1);
+    }
+
+    private void generateBoardWithRandomCase(){
+        Case[] baseElement = {new SpellCase("éclair", 2), new WeaponCase("massues", 3), new EnemyCase(new Goblin()), new SpellCase("éclair", 2), new WeaponCase("massues", 3), new EnemyCase(new Goblin()), new PotionCase("potion", 2), new SpellCase("éclair", 2), new EnemyCase(new Goblin()), new EnemyCase(new Wizard()), new WeaponCase("massues", 3), new EnemyCase(new Goblin()), new PotionCase("potion", 2), new EmptyCase(), new EnemyCase(new Goblin()), new EmptyCase(), new SpellCase("éclair", 2), new EnemyCase(new Goblin()), new WeaponCase("épée", 5), new EnemyCase(new Wizard()), new EnemyCase(new Goblin()), new WeaponCase("massues", 3), new SpellCase("éclair", 2), new EnemyCase(new Goblin()), new EnemyCase(new Wizard()), new WeaponCase("épée", 5), new EnemyCase(new Goblin()), new PotionCase("grande potion", 5), new EmptyCase(), new EnemyCase(new Goblin()), new PotionCase("potion", 2), new EnemyCase(new Wizard()), new PotionCase("potion", 2), new EmptyCase(), new EnemyCase(new Wizard()), new EnemyCase(new Wizard()), new EnemyCase(new Wizard()), new WeaponCase("massues", 3), new PotionCase("potion", 2), new EnemyCase(new Wizard()), new PotionCase("grande potion", 5), new WeaponCase("épée", 5), new PotionCase("potion", 2), new EnemyCase(new Wizard()), new EnemyCase(new Dragon()), new EmptyCase(), new EnemyCase(new Wizard()), new SpellCase("boules de feu", 7), new SpellCase("boules de feu", 7), new EmptyCase(), new EmptyCase(), new EnemyCase(new Dragon()), new WeaponCase("épée", 5), new EmptyCase(), new EmptyCase(), new EnemyCase(new Dragon()), new EmptyCase(), new EmptyCase(), new EmptyCase(), new EmptyCase(), new EmptyCase(), new EnemyCase(new Dragon()), new EmptyCase(), new EmptyCase()};
+        this.caseContent =  Arrays.asList(baseElement);
     }
 }
