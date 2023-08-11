@@ -9,16 +9,16 @@ import Exception.*;
 
 public class Game {
 
-    private Personnage playerCharacter;
-    private BoardGame boardGame;
-    private BoardMenu menu;
+    private final Personnage playerCharacter;
+    private final BoardGame boardGame;
+    private final BoardMenu menu;
     private final Dice dice;
 
     public Game(Personnage playerCharacter) {
         this.playerCharacter = playerCharacter;
         this.boardGame = new BoardGame();
         this.menu = new BoardMenu();
-        this.dice = new PipedDice1();
+        this.dice = new Dice6Face();
     }
 
 

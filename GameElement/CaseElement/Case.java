@@ -11,6 +11,6 @@ public abstract class Case {
     public abstract String toString();
 
     public void interaction(Personnage playerChoice) {
-        System.out.println("Un villain ennemi est sur la case!");
+        System.out.println("La case est vide...");
     }
 }
