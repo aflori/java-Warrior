@@ -6,13 +6,13 @@ import Character.Personnage;
 import jdbc_interaction.hero_src;
 
 import java.sql.SQLException;
-import java.util.Set;
+import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
         GeneralMenu menu = null;
-        Set<Personnage> availableCharacter=null;
+        List<Personnage> availableCharacter=null;
 
         try {
             hero_src dataBaseConnection = new hero_src();

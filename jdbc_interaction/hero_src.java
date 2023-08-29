@@ -2,8 +2,8 @@ package jdbc_interaction;
 
 import java.lang.reflect.InvocationTargetException;
 import java.sql.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
+import java.util.ArrayList;
 
 import Character.*;
 
@@ -19,8 +19,8 @@ public class hero_src {
         this.requestLaunch = databaseSrc.createStatement();
     }
 
-    public Set<Personnage> getHeroesSet() {
-        Set<Personnage> characterSet = new HashSet<Personnage>();
+    public List<Personnage> getHeroesSet() {
+        List<Personnage> characterSet = new ArrayList<Personnage>();
 
         ResultSet personageList = null;
         try {

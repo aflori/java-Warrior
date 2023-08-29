@@ -3,50 +3,29 @@ package MenuClass;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import java.util.Set;
+import java.util.List;
 
-import Character.*;
 import Exception.FinDePartie;
 import Character.Personnage;
 
 
 public class GeneralMenu {
-    private enum PossibleReturn {
-        CREATE_CHARACTER, QUIT_GAME, START_GAME
-    }
 
     private enum CreationCharacterAction {SHOW, MODIFY, END}
 
 
-    private boolean didCreateCharacter;
+    //    private boolean didCreateCharacter;
     private final Scanner consoleInput;
-    private final Set<Personnage> availableCharacters;
+    private final List<Personnage> availableCharacters;
+    private Personnage characterChosenByPlayer;
 
-    public GeneralMenu(Set<Personnage> availableCharacters) {
-        this.didCreateCharacter = false;
+    public GeneralMenu(List<Personnage> availableCharacters) {
+//        this.didCreateCharacter = false;
         this.consoleInput = ScannerInput.getSingletonClass().consoleScanner;
         this.availableCharacters = availableCharacters;
+        this.characterChosenByPlayer = null;
     }
 
-
-    public Personnage playGameMenu() throws FinDePartie {
-        PossibleReturn menuAction;
-        Personnage playerCharacter = null;
-
-        do {
-
-            menuAction = this.showMenu();
-
-            switch (menuAction) {
-
-                case CREATE_CHARACTER -> playerCharacter = this.menuToCreateCharacter();
-                case START_GAME -> {
-                    return playerCharacter;
-                }
-            }
-        } while (true);
-
-    }
 
     private int intInputUserFromConsole(String message, String[] options) {
         int userInput = 0;
@@ -59,6 +38,7 @@ public class GeneralMenu {
                 userInput = consoleInput.nextInt();
             } catch (InputMismatchException e) {
                 System.err.println("Entrée invalide");
+
                 //buffer clean to avoid infinite loop
                 consoleInput.nextLine();
             }
@@ -67,168 +47,54 @@ public class GeneralMenu {
         return userInput;
     }
 
-    private PossibleReturn showMenu() throws FinDePartie {
-        String[] option;
-        if (didCreateCharacter) {
-            option = new String[]{"Effacer puis recréer ton personnage", "Commencer une nouvelle partie", "Quitter le jeu"};
-        } else {
-            option = new String[]{"Créer ton personnage", "Quitter le jeu"};
-        }
+    public Personnage playGameMenu() throws FinDePartie {
 
-        int userInput = this.intInputUserFromConsole(
-                "Que voulez-vous faire? (tapez le bon numéro):",
-                option
-        );
-        switch (userInput) {
-            case 1 -> {
-                return PossibleReturn.CREATE_CHARACTER;
-            }
-            case 2 -> {
-                if (didCreateCharacter) return PossibleReturn.START_GAME;
+        while (true) {
+            if (this.characterChosenByPlayer == null) {
+                this.menuToChooseCharacter();
+            } else {
+                if (this.menuToConfirmChoice()) break;
             }
         }
-        throw new FinDePartie();
 
+        return this.characterChosenByPlayer;
     }
 
-    private Personnage menuToCreateCharacter() throws FinDePartie {
-        CharacterType typeCharacter;
-        Personnage playerPersonnage;
-        this.didCreateCharacter = true;
-        String name;
-
-
-        typeCharacter = this.menuChooseCharacterType();
-        name = this.getCharacterName(typeCharacter);
-
-        if (typeCharacter == CharacterType.MAGICIAN) playerPersonnage = new Magicien(name);
-        else playerPersonnage = new Guerrier(name);
-
-        System.out.println("personnage créé!");
-
-        return this.menuEditionCharacter(playerPersonnage);
-    }
-
-
-    /*----------------------------
-    showMenu specialized function
-      ----------------------------*/
-
-    //none
-
-    /*----------------------------
-    createCharacter specialized function
-      ----------------------------*/
-    private CharacterType menuChooseCharacterType() throws FinDePartie {
-        int inputNumber = this.intInputUserFromConsole(
-                "Quelle type de personnage voulez-vous créer?",
-                new String[]{"un magicien", "un guerrier", "quitter la partie"}
-        );
-        switch (inputNumber) {
-            case 1 -> {
-                return CharacterType.MAGICIAN;
-            }
-            case 2 -> {
-                return CharacterType.WARRIOR;
-            }
-            case 3 -> throw new FinDePartie();
+    private void menuToChooseCharacter() throws FinDePartie {
+        int numberAvailableCharacter = this.availableCharacters.size();
+        String[] userOption = new String[numberAvailableCharacter + 1];
+        String message = "Quel personnage choisir?";
+        for (int i = 0; i < this.availableCharacters.size(); i++) {
+            userOption[i] = this.availableCharacters.get(i).toString();
         }
+        userOption[numberAvailableCharacter] = "Quitter la partie";
 
-        //this line should never be executed
-        return CharacterType.WARRIOR;
-    }
+        int resultUser = this.intInputUserFromConsole(message, userOption);
 
-    private String getCharacterName(CharacterType typeCharacter) {
-        String characterName;
-        consoleInput.nextLine();
-        do {
-            System.out.println("Quel est le nom du future " + (typeCharacter == CharacterType.MAGICIAN ? "magicien" : "guerrier") + ".");
-            characterName = consoleInput.nextLine();
-
-        } while (characterName.isEmpty());
-
-        return characterName;
-    }
-
-    private Personnage menuEditionCharacter(Personnage defaultConfig) throws FinDePartie {
-        CreationCharacterAction inputAnswer;
-        do {
-            inputAnswer = askCreationCharacterUserAction();
-            switch (inputAnswer) {
-                case SHOW -> defaultConfig.printCharacterInformation();
-                case MODIFY -> this.modifierCharacterSettings(defaultConfig);
-            }
-        } while (inputAnswer != CreationCharacterAction.END);
-
-        return defaultConfig;
-    }
-
-
-    private CreationCharacterAction askCreationCharacterUserAction() throws FinDePartie {
-        int inputAnswer = this.intInputUserFromConsole(
-                "Création du personnage en cour, que voulez-vous faire?",
-                new String[]{"Afficher les caractéristiques du personnage",
-                        "Modifier les caractéristiques du personnage",
-                        "Confirmer la selection",
-                        "Quitter la partie"
-                }
-        );
-
-        switch (inputAnswer) {
-            case 1 -> {
-                return CreationCharacterAction.SHOW;
-            }
-            case 2 -> {
-                return CreationCharacterAction.MODIFY;
-            }
-            case 3 -> {
-                return CreationCharacterAction.END;
-            }
-
-            default -> throw new FinDePartie();
-        }
-    }
-
-    private void modifierCharacterSettings(Personnage character) throws FinDePartie {
-        int inputValue = this.intInputUserFromConsole(
-                "Que voulez-vous changer?",
-                new String[]{"Le nom", "Sa vie", "Sa force d'attaque", "Quitter la partie"}
-        );
-        if (inputValue == 4) {
+        if (resultUser == (numberAvailableCharacter + 1)) {
             throw new FinDePartie();
         }
-        if (inputValue == 1) {
-            System.out.println("Entrez le nouveau nom");
-            String newName = "";
-            while (newName.isEmpty()) {
-                newName = consoleInput.nextLine();
-            }
-            character.setName(newName);
-        } else {
-            System.out.println("Entrez sa nouvelle valeur " + (inputValue == 2 ? "de vie" : "d'attaque"));
-            int newValue = -1;
-            while (
-                    (inputValue == 2 && !character.isValidStartLifePoint(newValue))
-                            || (inputValue == 3 && !character.isValidStartAttackPoint(newValue))
-            ) {
-                try {
-                    newValue = consoleInput.nextInt();
-                    if(   (inputValue == 2 && !character.isValidStartLifePoint(newValue))
-                       || (inputValue == 3 && !character.isValidStartAttackPoint(newValue))
-                    ) {
-                        System.err.println("Valeur invalide!");
-                    }
-                } catch (InputMismatchException ignored) {
-                    consoleInput.nextLine(); //ignore the uncorrected line
-                    System.err.println("Ceci n'est pas un nombre!");
-                }
-            }
+        this.confirmCharacterChoice(this.availableCharacters.get(resultUser-1));
+    }
 
-            if (inputValue == 2) {
-                character.setLifePoint(newValue);
-            } else {
-                character.setAttackPower(newValue);
+    private void confirmCharacterChoice(Personnage personnage) throws FinDePartie {
+        System.out.println("Voici les informations du personnage:");
+        personnage.printCharacterInformation();
+
+        int result = this.intInputUserFromConsole("Est le dernier mot?", new String[]{"Oui", "Non", "Quitter la partie"});
+        switch (result) {
+            case 1 -> {
+                this.characterChosenByPlayer = personnage;
+            }
+            case 3 -> {
+                throw new FinDePartie();
             }
         }
     }
+
+    private boolean menuToConfirmChoice() {
+
+        return true;
+    }
+    
 }
