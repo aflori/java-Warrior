@@ -3,10 +3,12 @@ package MenuClass;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.Set;
 
 import Character.*;
 import Exception.FinDePartie;
 import Character.Personnage;
+
 
 public class GeneralMenu {
     private enum PossibleReturn {
@@ -18,10 +20,12 @@ public class GeneralMenu {
 
     private boolean didCreateCharacter;
     private final Scanner consoleInput;
+    private final Set<Personnage> availableCharacters;
 
-    public GeneralMenu() {
+    public GeneralMenu(Set<Personnage> availableCharacters) {
         this.didCreateCharacter = false;
         this.consoleInput = ScannerInput.getSingletonClass().consoleScanner;
+        this.availableCharacters = availableCharacters;
     }
 
 

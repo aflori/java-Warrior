@@ -11,21 +11,20 @@ import java.util.Set;
 public class Main {
 
     public static void main(String[] args) {
-        GeneralMenu menu = new GeneralMenu();
-        Game game = null;
-        Set<Personnage> availableCharacter;
+        GeneralMenu menu = null;
+        Set<Personnage> availableCharacter=null;
+
         try {
-            hero_src testFct = new hero_src();
-            availableCharacter = testFct.getHeroesSet();
-            System.out.println(availableCharacter);
+            hero_src dataBaseConnection = new hero_src();
+            menu = new GeneralMenu(dataBaseConnection.getHeroesSet());
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            System.err.println("Impossible de charger les personnages de la base de donnée!");
+            System.exit(1);
         }
 
         try {
             while(true) {
-                Personnage playerCharacter = menu.playGameMenu(); // line comented to test game itself
-                //Personnage playerCharacter = new Guerrier("Michello",8,10);
+                Personnage playerCharacter = menu.playGameMenu();
 
                 Game playerGame = new Game(playerCharacter);
                 playerGame.startGame();
