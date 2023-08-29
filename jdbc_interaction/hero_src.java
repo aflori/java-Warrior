@@ -1,5 +1,6 @@
 package jdbc_interaction;
 
+import java.lang.reflect.InvocationTargetException;
 import java.sql.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -28,11 +29,10 @@ public class hero_src {
             while (personageList.next()) {
                 Personnage extractedCharacter = null;
                 String type = personageList.getString("type");
-                if (type.equals("magician")) {
-                    extractedCharacter = new Magicien();
-                } else {
-                    extractedCharacter = new Guerrier();
-                }
+
+                Class<?> characterClassName = Class.forName("Character."+type);
+                extractedCharacter = (Personnage) characterClassName.getConstructor().newInstance();
+
                 extractedCharacter.setAttackPower(personageList.getInt("attackPoint"));
                 extractedCharacter.setName(personageList.getString("name"));
                 extractedCharacter.setLifePoint(personageList.getInt("lifePoint"));
@@ -43,6 +43,9 @@ public class hero_src {
             }
         } catch (SQLException e) {
             return characterSet;
+        } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException |
+                 InvocationTargetException e) {
+            throw new RuntimeException(e);
         }
 
         return characterSet;
