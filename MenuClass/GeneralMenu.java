@@ -81,7 +81,7 @@ public class GeneralMenu {
         System.out.println("Voici les informations du personnage:");
         personnage.printCharacterInformation();
 
-        int result = this.intInputUserFromConsole("Est le dernier mot?", new String[]{"Oui", "Non", "Quitter la partie"});
+        int result = this.intInputUserFromConsole("Est-ce ton dernier mot?", new String[]{"Oui", "Non", "Quitter la partie"});
         switch (result) {
             case 1 -> {
                 this.characterChosenByPlayer = personnage;
@@ -92,9 +92,20 @@ public class GeneralMenu {
         }
     }
 
-    private boolean menuToConfirmChoice() {
-
-        return true;
+    private boolean menuToConfirmChoice() throws FinDePartie {
+        int resultReturn = intInputUserFromConsole("Que veux-tu faire?", new String[]{"Commencer la partie", "Changer de personnage", "Quitter le jeu"});
+        switch (resultReturn) {
+            case 1 -> {
+                return true;
+            }
+            case 3 -> {
+                throw new FinDePartie();
+            }
+            default -> {
+                this.characterChosenByPlayer = null;
+                return false;
+            }
+        }
     }
-    
+
 }
