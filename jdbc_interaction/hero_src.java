@@ -15,6 +15,11 @@ public class hero_src {
         String protocole = "jdbc:mysql", ip = "localhost", port = "3306", baseName = "java_warrior";
         String userAccount, userPassword;
 
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
         Connection databaseSrc = DriverManager.getConnection(protocole + "://" + ip + ":" + port + "/" + baseName, userAccount, userPassword);
         this.requestLaunch = databaseSrc.createStatement();
     }
