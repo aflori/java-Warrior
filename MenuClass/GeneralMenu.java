@@ -65,7 +65,7 @@ public class GeneralMenu {
         String[] userOption = new String[numberAvailableCharacter + 1];
         String message = "Quel personnage choisir?";
         for (int i = 0; i < this.availableCharacters.size(); i++) {
-            userOption[i] = this.availableCharacters.get(i).toString();
+            userOption[i] = "le " + this.availableCharacters.get(i).getClassName() + ", " + this.availableCharacters.get(i).toString();
         }
         userOption[numberAvailableCharacter] = "Quitter la partie";
 
@@ -74,7 +74,7 @@ public class GeneralMenu {
         if (resultUser == (numberAvailableCharacter + 1)) {
             throw new FinDePartie();
         }
-        this.confirmCharacterChoice(this.availableCharacters.get(resultUser-1));
+        this.confirmCharacterChoice(this.availableCharacters.get(resultUser - 1));
     }
 
     private void confirmCharacterChoice(Personnage personnage) throws FinDePartie {
