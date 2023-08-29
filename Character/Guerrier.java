@@ -53,4 +53,7 @@ public class Guerrier extends Personnage {
         if (this.lifePoint > 10) this.lifePoint = 10;
     }
 
+    public String getClassName() {
+        return "guerrier";
+    }
 }

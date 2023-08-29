@@ -65,4 +65,6 @@ public abstract class Personnage {
         this.lifePoint -= damageTaken;
         if (this.lifePoint < 0) this.lifePoint = 0;
     }
+
+    public abstract String getClassName();
 }

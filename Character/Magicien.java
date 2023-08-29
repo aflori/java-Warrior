@@ -53,4 +53,9 @@ public class Magicien extends Personnage {
         this.lifePoint += healthRestored;
         if (this.lifePoint > 6) this.lifePoint = 6;
     }
+
+    @Override
+    public String getClassName() {
+        return "magicien";
+    }
 }
