@@ -6,6 +6,7 @@ import Character.Personnage;
 import jdbc_interaction.hero_src;
 
 import java.sql.SQLException;
+import Exception.HeroException;
 
 public class Main {
 
@@ -15,7 +16,7 @@ public class Main {
         try {
             hero_src dataBaseConnection = new hero_src();
             menu = new GeneralMenu(dataBaseConnection.getHeroesSet());
-        } catch (SQLException e) {
+        } catch (HeroException e) {
             System.err.println("Impossible de charger les personnages de la base de donnée!");
             System.exit(1);
         }

@@ -16,13 +16,18 @@ import java.util.List;
 import java.util.ArrayList;
 
 import Character.*;
+import Exception.HeroException;
 
 
 public class hero_src {
 
     private final Statement requestLaunch;
 
-    public hero_src() throws SQLException {
+    /**
+     *
+     * @throws HeroException
+     */
+    public hero_src() throws HeroException {
         String protocole = "jdbc:mysql", ip = "localhost", port = "3306", baseName = "java_warrior";
         String userAccount, userPassword;
 
@@ -36,21 +41,25 @@ public class hero_src {
             userPassword = prop.getProperty("database.password");
         } catch (IOException e) {
             System.err.println("Database not configured!");
-            userAccount = "";
-            userPassword = "";
+            throw new HeroException("");
         }
 
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
+            throw new HeroException(e);
         }
-        Connection databaseSrc = DriverManager.getConnection(protocole + "://" + ip + ":" + port + "/" + baseName, userAccount, userPassword);
-        this.requestLaunch = databaseSrc.createStatement();
+        Connection databaseSrc = null;
+        try {
+            databaseSrc = DriverManager.getConnection(protocole + "://" + ip + ":" + port + "/" + baseName, userAccount, userPassword);
+            this.requestLaunch = databaseSrc.createStatement();
+        } catch (SQLException e) {
+            throw new HeroException(e);
+        }
     }
 
-    public List<Personnage> getHeroesSet() {
+    public List<Personnage> getHeroesSet() throws HeroException {
         List<Personnage> characterSet = new ArrayList<Personnage>();
 
         ResultSet personageList = null;
@@ -61,8 +70,8 @@ public class hero_src {
                 Personnage extractedCharacter = null;
                 String type = personageList.getString("type");
 
-                Class<?> characterClassName = Class.forName("Character." + type); // Character.Magicien or Character.Guerrier
-                extractedCharacter = (Personnage) characterClassName.getConstructor().newInstance();
+                Class<Personnage> characterClassName = (Class<Personnage>) Class.forName("Character." + type); // Character.Magicien or Character.Guerrier
+                extractedCharacter = characterClassName.getConstructor().newInstance();
 
                 extractedCharacter.setName(personageList.getString("name"));
                 extractedCharacter.setAttackPower(personageList.getInt("attackPoint"));
@@ -76,7 +85,7 @@ public class hero_src {
             return characterSet;
         } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException |
                  InvocationTargetException e) {
-            throw new RuntimeException(e);
+            throw new HeroException(e);
         }
 
         return characterSet;
