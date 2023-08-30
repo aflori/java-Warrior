@@ -11,7 +11,7 @@ public class BoardMenu {
 
 
     public BoardMenu() {
-        this.consoleInput = ScannerInput.getSingletonClass().consoleScanner;
+        this.consoleInput = ScannerInput.getSingletonClass();
         this.clearScannerBuffer();
     }
 

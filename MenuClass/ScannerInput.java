@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class ScannerInput {
 
-    public final Scanner consoleScanner;
+    private final Scanner consoleScanner;
 
     private static ScannerInput uniqueElement;
     private ScannerInput()
@@ -12,14 +12,14 @@ public class ScannerInput {
         this.consoleScanner = new Scanner(System.in);
     }
 
-    public static ScannerInput getSingletonClass()
+    public static Scanner getSingletonClass()
     {
         if(uniqueElement == null)
         {
             uniqueElement = new ScannerInput();
         }
 
-        return uniqueElement;
+        return uniqueElement.consoleScanner;
     }
 
 }

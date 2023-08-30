@@ -12,7 +12,7 @@ public class CaseMenu {
     private final Scanner consoleInput;
 
     public CaseMenu() {
-        this.consoleInput = ScannerInput.getSingletonClass().consoleScanner;
+        this.consoleInput = ScannerInput.getSingletonClass();
     }
 
     //return value: if yes or not, wizard has taken the available spell

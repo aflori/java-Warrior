@@ -21,7 +21,7 @@ public class GeneralMenu {
 
     public GeneralMenu(List<Personnage> availableCharacters) {
 //        this.didCreateCharacter = false;
-        this.consoleInput = ScannerInput.getSingletonClass().consoleScanner;
+        this.consoleInput = ScannerInput.getSingletonClass();
         this.availableCharacters = availableCharacters;
         this.characterChosenByPlayer = null;
     }
