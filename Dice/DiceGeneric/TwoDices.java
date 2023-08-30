@@ -2,6 +2,11 @@ package Dice.DiceGeneric;
 
 import Dice.Dice;
 
+/**
+ * generic class to represent 2 different dice at each throw
+ *
+ * @see Dice.DiceClass.TwoDices6Face
+ */
 public abstract class TwoDices implements Dice {
     private final Dice dice1;
     private int lastValueDice1;

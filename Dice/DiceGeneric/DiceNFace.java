@@ -3,6 +3,12 @@ package Dice.DiceGeneric;
 import Dice.Dice;
 import ProgramRandom.*;
 
+/**
+ * generic dice for 'non piped' dice
+ *
+ * @see Dice.DiceClass.Dice6Face
+ * @see Dice.DiceClass.Dice8Face
+ */
 public abstract class DiceNFace implements Dice {
     protected final int numberFace;
     protected final MyPersonnalRandom random;

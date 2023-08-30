@@ -3,6 +3,10 @@ package Character;
 import Tools.Defense.DefenseTool;
 import Tools.Offense.OffenseTool;
 
+/**
+ * Represent a hero, without any class.
+ * <p>that also define some comportment that class must define (or redefine those)</p>
+ */
 public abstract class Personnage {
     protected String name;
     protected int lifePoint;
@@ -11,11 +15,18 @@ public abstract class Personnage {
     protected OffenseTool weapon;
     protected DefenseTool shield;
 
+    /**
+     * override classic comportement to toString method
+     * @return the name of the hero
+     */
     @Override
     public String toString() {
         return this.name;
     }
 
+    /**
+     * Print on stdout (System.out) all the information on the hero
+     */
     public abstract void printCharacterInformation();
 
     public String getName() {

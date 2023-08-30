@@ -2,6 +2,9 @@ package Character;
 
 import Tools.Offense.Spell;
 
+/**
+ * Represent a magician hero, with all its properties
+ */
 public class Magicien extends Personnage {
 
 

@@ -2,6 +2,9 @@ package Character;
 
 import Tools.Offense.Weapon;
 
+/**
+ * Represent a warrior hero, with all its properties
+ */
 public class Guerrier extends Personnage {
 
     public Guerrier() {
